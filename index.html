@@ -75,27 +75,27 @@
   <p class="meta" id="policy-subtitle">Gizlilik Politikası · VoronLabs</p>
   <nav aria-label="Dil / Language">
     <select id="lang-select" aria-label="Dil / Language">
-      <option value="tr-TR">Türkçe (tr-TR)</option>
+      <option value="id">Bahasa Indonesia (id)</option>
+      <option value="de-DE">Deutsch (de-DE)</option>
       <option value="en-US">English (en-US)</option>
       <option value="es-419">Español (es-419)</option>
-      <option value="pt-BR">Português - Brasil (pt-BR)</option>
-      <option value="de-DE">Deutsch (de-DE)</option>
       <option value="fr-FR">Français (fr-FR)</option>
       <option value="it-IT">Italiano (it-IT)</option>
       <option value="pl-PL">Polski (pl-PL)</option>
-      <option value="id">Bahasa Indonesia (id)</option>
+      <option value="pt-BR">Português - Brasil (pt-BR)</option>
       <option value="vi">Tiếng Việt (vi)</option>
+      <option value="tr-TR">Türkçe (tr-TR)</option>
+      <option value="el-GR">Ελληνικά (el-GR)</option>
       <option value="ru-RU">Русский (ru-RU)</option>
       <option value="uk">Українська (uk)</option>
-      <option value="el-GR">Ελληνικά (el-GR)</option>
-      <option value="ja-JP">日本語 (ja-JP)</option>
-      <option value="ko-KR">한국어 (ko-KR)</option>
-      <option value="zh-CN">简体中文 (zh-CN)</option>
+      <option value="iw-IL">עברית (iw-IL)</option>
       <option value="ar">العربية (ar)</option>
       <option value="fa">فارسی (fa)</option>
-      <option value="iw-IL">עברית (iw-IL)</option>
       <option value="hi-IN">हिन्दी (hi-IN)</option>
       <option value="th">ไทย (th)</option>
+      <option value="ja-JP">日本語 (ja-JP)</option>
+      <option value="zh-CN">简体中文 (zh-CN)</option>
+      <option value="ko-KR">한국어 (ko-KR)</option>
     </select>
   </nav>
 
@@ -998,12 +998,31 @@
     }
     var select = document.getElementById("lang-select");
     var subtitle = document.getElementById("policy-subtitle");
+    function isLatin(str) {
+      return /^[A-Za-z\u00C0-\u024F]/.test(str);
+    }
+    function sortOptions(activeCode) {
+      if (!select) return;
+      var opts = Array.prototype.slice.call(select.options);
+      opts.sort(function (a, b) {
+        if (a.value === activeCode) return -1;
+        if (b.value === activeCode) return 1;
+        var aLat = isLatin(a.text);
+        var bLat = isLatin(b.text);
+        if (aLat !== bLat) return aLat ? -1 : 1;
+        return a.text.localeCompare(b.text, activeCode, { sensitivity: "base" });
+      });
+      for (var i = 0; i < opts.length; i++) {
+        select.appendChild(opts[i]);
+      }
+      select.value = activeCode;
+    }
     function show(lang, updateUrl) {
       var code = resolve(lang) || "en-US";
       root.className = "js lang-" + code;
       var section = document.querySelector('section[data-lang="' + code + '"]');
       root.lang = (section && section.getAttribute("lang")) || code;
-      if (select && select.value !== code) select.value = code;
+      sortOptions(code);
       var h2 = section && section.querySelector("h2");
       if (h2) {
         var titleText = h2.textContent;
@@ -1013,9 +1032,19 @@
       if (updateUrl && history.replaceState) history.replaceState(null, "", "#" + code);
     }
     function detectBrowserLang() {
-      var list = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || "en-US"];
-      for (var i = 0; i < list.length; i++) {
-        var found = resolve(list[i]);
+      var candidates = [];
+      if (navigator.languages && navigator.languages.length) {
+        for (var i = 0; i < navigator.languages.length; i++) candidates.push(navigator.languages[i]);
+      }
+      if (navigator.language) candidates.push(navigator.language);
+      if (navigator.userLanguage) candidates.push(navigator.userLanguage);
+      if (navigator.systemLanguage) candidates.push(navigator.systemLanguage);
+      try {
+        var intlLocale = Intl.DateTimeFormat().resolvedOptions().locale;
+        if (intlLocale) candidates.push(intlLocale);
+      } catch (e) {}
+      for (var j = 0; j < candidates.length; j++) {
+        var found = resolve(candidates[j]);
         if (found) return found;
       }
       return "en-US";
