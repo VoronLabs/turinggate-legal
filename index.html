@@ -18,26 +18,70 @@
   h3 { font-size: 1.02rem; margin: 22px 0 4px; }
   p, li { margin: 0 0 10px; }
   .meta { color: var(--muted); font-size: 0.92rem; margin: 0 0 16px; }
-  nav { display: flex; gap: 12px; margin: 16px 0 0; }
+  nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; }
   a { color: var(--accent); }
-  nav a { padding: 6px 12px; border: 1px solid var(--line); border-radius: 8px; text-decoration: none; }
+  nav a { padding: 5px 10px; border: 1px solid var(--line); border-radius: 8px; text-decoration: none; font-size: 0.92rem; }
   nav a[aria-current="true"] { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 600; }
   .summary { border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; margin: 12px 0 0; }
   .summary ul { margin: 0; padding-left: 20px; }
-  /* Dil düğmesi bir dili gösterir, diğerini gizler. JavaScript kapalıysa iki dil alt alta görünür */
+  [dir="rtl"] .summary ul { padding-left: 0; padding-right: 20px; }
+  /* Dil düğmesi seçili dili gösterir, diğerlerini gizler. JavaScript kapalıysa tüm diller alt alta görünür */
   html.js section[data-lang] { display: none; }
-  html.js.lang-tr section[data-lang="tr"], html.js.lang-en section[data-lang="en"] { display: block; }
+  html.js.lang-tr-TR section[data-lang="tr-TR"],
+  html.js.lang-en-US section[data-lang="en-US"],
+  html.js.lang-es-419 section[data-lang="es-419"],
+  html.js.lang-pt-BR section[data-lang="pt-BR"],
+  html.js.lang-de-DE section[data-lang="de-DE"],
+  html.js.lang-fr-FR section[data-lang="fr-FR"],
+  html.js.lang-it-IT section[data-lang="it-IT"],
+  html.js.lang-pl-PL section[data-lang="pl-PL"],
+  html.js.lang-id section[data-lang="id"],
+  html.js.lang-vi section[data-lang="vi"],
+  html.js.lang-ru-RU section[data-lang="ru-RU"],
+  html.js.lang-uk section[data-lang="uk"],
+  html.js.lang-el-GR section[data-lang="el-GR"],
+  html.js.lang-ja-JP section[data-lang="ja-JP"],
+  html.js.lang-ko-KR section[data-lang="ko-KR"],
+  html.js.lang-zh-CN section[data-lang="zh-CN"],
+  html.js.lang-ar section[data-lang="ar"],
+  html.js.lang-fa section[data-lang="fa"],
+  html.js.lang-iw-IL section[data-lang="iw-IL"],
+  html.js.lang-hi-IN section[data-lang="hi-IN"],
+  html.js.lang-th section[data-lang="th"] { display: block; }
 </style>
 </head>
 <body>
 <main>
   <h1>Turing Gate</h1>
   <p class="meta">Gizlilik Politikası / Privacy Policy · VoronLabs</p>
-  <nav><a href="#tr" data-lang="tr">Türkçe</a><a href="#en" data-lang="en" hreflang="en">English</a></nav>
+  <nav aria-label="Dil / Language">
+    <a href="#tr-TR" data-lang="tr-TR" hreflang="tr-TR">Türkçe</a>
+    <a href="#en-US" data-lang="en-US" hreflang="en-US">English</a>
+    <a href="#es-419" data-lang="es-419" hreflang="es-419">Español</a>
+    <a href="#pt-BR" data-lang="pt-BR" hreflang="pt-BR">Português (Brasil)</a>
+    <a href="#de-DE" data-lang="de-DE" hreflang="de-DE">Deutsch</a>
+    <a href="#fr-FR" data-lang="fr-FR" hreflang="fr-FR">Français</a>
+    <a href="#it-IT" data-lang="it-IT" hreflang="it-IT">Italiano</a>
+    <a href="#pl-PL" data-lang="pl-PL" hreflang="pl-PL">Polski</a>
+    <a href="#id" data-lang="id" hreflang="id">Bahasa Indonesia</a>
+    <a href="#vi" data-lang="vi" hreflang="vi">Tiếng Việt</a>
+    <a href="#ru-RU" data-lang="ru-RU" hreflang="ru-RU">Русский</a>
+    <a href="#uk" data-lang="uk" hreflang="uk">Українська</a>
+    <a href="#el-GR" data-lang="el-GR" hreflang="el-GR">Ελληνικά</a>
+    <a href="#ja-JP" data-lang="ja-JP" hreflang="ja-JP">日本語</a>
+    <a href="#ko-KR" data-lang="ko-KR" hreflang="ko-KR">한국어</a>
+    <a href="#zh-CN" data-lang="zh-CN" hreflang="zh-CN">简体中文</a>
+    <a href="#ar" data-lang="ar" hreflang="ar">العربية</a>
+    <a href="#fa" data-lang="fa" hreflang="fa">فارسی</a>
+    <a href="#iw-IL" data-lang="iw-IL" hreflang="he">עברית</a>
+    <a href="#hi-IN" data-lang="hi-IN" hreflang="hi-IN">हिन्दी</a>
+    <a href="#th" data-lang="th" hreflang="th">ไทย</a>
+  </nav>
 
-  <section id="tr" data-lang="tr">
+  <section id="tr-TR" data-lang="tr-TR" lang="tr">
+    <span id="tr"></span>
     <h2>Gizlilik Politikası</h2>
-    <p class="meta">Yürürlük tarihi: 7 Kasım 2026</p>
+    <p class="meta">Yürürlük tarihi: 19 Kasım 2026</p>
     <p>Bu politika, VoronLabs tarafından geliştirilen Turing Gate mobil oyunu ("Oyun") için geçerlidir.</p>
     <div class="summary">
       <ul>
@@ -66,18 +110,19 @@
     <p>Oyun Unity oyun motoruyla geliştirilmiştir. Unity'nin analitik, çökme raporu ve teşhis hizmetleri oyunda kapalıdır; oyun internete bağlanmadığı için Unity'ye de veri gitmez. Oyunu Google Play'den indirdiğinde Google, mağaza hizmetleri için kendi gizlilik politikasına göre bilgi toplayabilir; bu, Oyun'un kontrolünde değildir.</p>
 
     <h3>Çocuklar</h3>
-    <p>Oyun 13 yaşın altındaki çocuklara yönelik değildir. Oyun hiçbir yaştan kişisel veri toplamaz.</p>
+    <p>Oyun 13 yaşın altındaki (veya ülkenizdeki geçerli dijital rıza yaşının altındaki) çocuklara yönelik değildir. Oyun hiçbir yaştan kişisel veri toplamaz.</p>
 
     <h3>Değişiklikler</h3>
     <p>Bu politika değişirse güncel hâli bu sayfada yayınlanır ve yukarıdaki tarih güncellenir. Oyuna ileride veri kullanan bir özellik (örneğin reklam ya da bulut kaydı) eklenirse, özellik yayınlanmadan önce bu politika güncellenir.</p>
 
     <h3>İletişim</h3>
-    <p>Sorular için: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a></p>
+    <p>Sorular için: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>. Bize e-posta gönderirseniz e-posta adresiniz ve mesajınız yalnızca talebinizi yanıtlamak için kullanılır; üçüncü taraflarla paylaşılmaz ve yanıtlandıktan sonra makul süre içinde silinir.</p>
   </section>
 
-  <section id="en" data-lang="en" lang="en">
+  <section id="en-US" data-lang="en-US" lang="en">
+    <span id="en"></span>
     <h2>Privacy Policy</h2>
-    <p class="meta">Effective date: November 7, 2026</p>
+    <p class="meta">Effective date: November 19, 2026</p>
     <p>This policy applies to the Turing Gate mobile game (the "Game") developed by VoronLabs.</p>
     <div class="summary">
       <ul>
@@ -106,31 +151,863 @@
     <p>The Game is built with the Unity game engine. Unity's analytics, crash reporting and diagnostics services are turned off in the Game, and because the Game never connects to the internet, no data reaches Unity either. When you download the Game from Google Play, Google may collect information for its store services under its own privacy policy; this is outside the Game's control.</p>
 
     <h3>Children</h3>
-    <p>The Game is not directed at children under 13. The Game does not collect personal data from anyone of any age.</p>
+    <p>The Game is not directed at children under 13 (or the applicable age of digital consent in your country). The Game does not collect personal data from anyone of any age.</p>
 
     <h3>Changes</h3>
     <p>If this policy changes, the updated version will be posted on this page and the date above will be updated. If a feature that uses data (for example ads or cloud saves) is added to the Game in the future, this policy will be updated before that feature is released.</p>
 
     <h3>Contact</h3>
-    <p>Questions: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a></p>
+    <p>Questions: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>. If you email us, your email address and message are used only to respond to your inquiry, are not shared with third parties, and are deleted within a reasonable period after your request is resolved.</p>
+  </section>
+
+  <section id="es-419" data-lang="es-419" lang="es-419">
+    <span id="es"></span>
+    <h2>Política de Privacidad</h2>
+    <p class="meta">Fecha de entrada en vigor: 19 de noviembre de 2026</p>
+    <p>Esta política se aplica al juego móvil Turing Gate (el "Juego"), desarrollado por VoronLabs.</p>
+    <div class="summary">
+      <ul>
+        <li>El Juego no recopila, procesa ni comparte ningún dato personal.</li>
+        <li>El Juego no se conecta a internet.</li>
+        <li>No hay cuentas, inicio de sesión, anuncios, analíticas ni compras integradas.</li>
+      </ul>
+    </div>
+
+    <h3>Datos que recopilamos</h3>
+    <p>El Juego no recopila ningún dato personal. No accede a información como tu nombre, correo electrónico, ubicación, identificadores del dispositivo, contactos o archivos, y no envía datos al desarrollador ni a terceros.</p>
+
+    <h3>Conexión a internet</h3>
+    <p>El Juego funciona completamente sin conexión. No solicita el permiso de acceso a internet de Android, por lo que no puede enviar datos a través de internet.</p>
+
+    <h3>Datos almacenados en tu dispositivo</h3>
+    <p>Tu progreso y configuración del juego (días alcanzados, puntuación, créditos del juego, contenido desbloqueado, preferencias de idioma, sonido y vibración) se guardan únicamente en tu dispositivo, en el almacenamiento propio de la aplicación. Estos datos no contienen información personal. Desinstalar la aplicación o borrar sus datos desde los ajustes de Android los elimina por completo.</p>
+
+    <h3>Copia de seguridad de Android</h3>
+    <p>Si la copia de seguridad de Google está activada en tu dispositivo, Android puede respaldar los datos locales de la aplicación en tu cuenta de Google y restaurarlos cuando vuelvas a instalarla. Esta copia de seguridad la realiza Google bajo su propia política de privacidad; el desarrollador no tiene acceso a ella. Puedes desactivarla en los ajustes de tu dispositivo.</p>
+
+    <h3>Permisos</h3>
+    <p>El Juego solo utiliza el permiso de vibración del dispositivo para la respuesta háptica. Puedes desactivar la vibración en los ajustes del Juego.</p>
+
+    <h3>Terceros</h3>
+    <p>El Juego está desarrollado con el motor Unity. Los servicios de analítica, informes de fallos y diagnóstico de Unity están desactivados en el Juego y, dado que el Juego nunca se conecta a internet, ningún dato llega a Unity. Cuando descargas el Juego desde Google Play, Google puede recopilar información para sus servicios de tienda según su propia política de privacidad; esto está fuera del control del Juego.</p>
+
+    <h3>Menores</h3>
+    <p>El Juego no está dirigido a menores de 13 años (o la edad mínima de consentimiento digital aplicable en tu país). El Juego no recopila datos personales de personas de ninguna edad.</p>
+
+    <h3>Cambios</h3>
+    <p>Si esta política cambia, la versión actualizada se publicará en esta página y se actualizará la fecha indicada arriba. Si en el futuro se añade al Juego alguna función que utilice datos (por ejemplo, anuncios o guardado en la nube), esta política se actualizará antes de que dicha función se publique.</p>
+
+    <h3>Contacto</h3>
+    <p>Preguntas: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>. Si nos envías un correo electrónico, tu dirección y tu mensaje se utilizarán únicamente para responder a tu consulta, no se compartirán con terceros y se eliminarán en un plazo razonable tras resolver tu solicitud.</p>
+  </section>
+
+  <section id="pt-BR" data-lang="pt-BR" lang="pt-BR">
+    <span id="pt"></span>
+    <h2>Política de Privacidade</h2>
+    <p class="meta">Data de vigência: 19 de novembro de 2026</p>
+    <p>Esta política aplica-se ao jogo para dispositivos móveis Turing Gate (o "Jogo"), desenvolvido pela VoronLabs.</p>
+    <div class="summary">
+      <ul>
+        <li>O Jogo não coleta, processa nem compartilha quaisquer dados pessoais.</li>
+        <li>O Jogo não se conecta à internet.</li>
+        <li>Não há contas, login, anúncios, análises (analytics) nem compras no aplicativo.</li>
+      </ul>
+    </div>
+
+    <h3>Dados que coletamos</h3>
+    <p>O Jogo não coleta nenhum dado pessoal. Ele não acessa informações como seu nome, e-mail, localização, identificadores do dispositivo, contatos ou arquivos, e não envia nenhum dado ao desenvolvedor ou a terceiros.</p>
+
+    <h3>Conexão com a internet</h3>
+    <p>O Jogo funciona totalmente offline. Ele não solicita a permissão de acesso à internet do Android e, portanto, não pode enviar dados pela internet.</p>
+
+    <h3>Dados armazenados no seu dispositivo</h3>
+    <p>Seu progresso e configurações do jogo (dias alcançados, pontuação, créditos do jogo, conteúdo desbloqueado, preferências de idioma, som e vibração) são armazenados apenas no seu dispositivo, no armazenamento próprio do aplicativo. Esses dados não contêm informações pessoais. Desinstalar o aplicativo ou limpar os dados do aplicativo nas configurações do Android apaga esses dados completamente.</p>
+
+    <h3>Backup do Android</h3>
+    <p>Se o backup do Google estiver ativado no seu dispositivo, o Android poderá fazer backup dos dados locais do aplicativo na sua conta do Google e restaurá-los quando você reinstalar o aplicativo. Esse backup é realizado pelo Google de acordo com a política de privacidade do Google; o desenvolvedor não tem acesso a ele. Você pode desativá-lo nas configurações do seu dispositivo.</p>
+
+    <h3>Permissões</h3>
+    <p>O Jogo usa apenas a permissão de vibração do dispositivo para retorno tátil (haptic feedback). Você pode desativar a vibração nas configurações do Jogo.</p>
+
+    <h3>Terceiros</h3>
+    <p>O Jogo foi desenvolvido com o motor de jogo Unity. Os serviços de análise, relatórios de falhas e diagnóstico da Unity estão desativados no Jogo e, como o Jogo nunca se conecta à internet, nenhum dado chega à Unity. Quando você baixa o Jogo pelo Google Play, o Google pode coletar informações para seus serviços de loja de acordo com sua própria política de privacidade; isso está fora do controle do Jogo.</p>
+
+    <h3>Crianças</h3>
+    <p>O Jogo não é direcionado a crianças menores de 13 anos (ou a idade aplicável de consentimento digital em seu país). O Jogo não coleta dados pessoais de ninguém, de nenhuma idade.</p>
+
+    <h3>Alterações</h3>
+    <p>Se esta política for alterada, a versão atualizada será publicada nesta página e a data acima será atualizada. Se um recurso que utiliza dados (por exemplo, anúncios ou salvamento na nuvem) for adicionado ao Jogo no futuro, esta política será atualizada antes do lançamento desse recurso.</p>
+
+    <h3>Contato</h3>
+    <p>Dúvidas: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>. Se você nos enviar um e-mail, seu endereço de e-mail e sua mensagem serão usados apenas para responder à sua solicitação, não serão compartilhados com terceiros e serão excluídos dentro de um prazo razoável após a resolução do seu pedido.</p>
+  </section>
+
+  <section id="de-DE" data-lang="de-DE" lang="de">
+    <span id="de"></span>
+    <h2>Datenschutzerklärung</h2>
+    <p class="meta">Datum des Inkrafttretens: 19. November 2026</p>
+    <p>Diese Richtlinie gilt für das von VoronLabs entwickelte Mobile-Game Turing Gate (das „Spiel").</p>
+    <div class="summary">
+      <ul>
+        <li>Das Spiel erhebt, verarbeitet oder teilt keinerlei personenbezogene Daten.</li>
+        <li>Das Spiel stellt keine Verbindung zum Internet her.</li>
+        <li>Es gibt keine Benutzerkonten, keine Anmeldung, keine Werbung, keine Analysedienste und keine In-App-Käufe.</li>
+      </ul>
+    </div>
+
+    <h3>Welche Daten wir erheben</h3>
+    <p>Das Spiel erhebt keine personenbezogenen Daten. Es greift nicht auf Informationen wie deinen Namen, deine E-Mail-Adresse, deinen Standort, Gerätekennungen, Kontakte oder Dateien zu und sendet keinerlei Daten an den Entwickler oder an Dritte.</p>
+
+    <h3>Internetverbindung</h3>
+    <p>Das Spiel funktioniert vollständig offline. Es fordert unter Android keine Internetberechtigung an und kann daher keine Daten über das Internet übertragen.</p>
+
+    <h3>Auf deinem Gerät gespeicherte Daten</h3>
+    <p>Dein Spielfortschritt und deine Einstellungen (erreichte Tage, Punktzahl, Spielkredite, freigeschaltete Inhalte sowie Sprach-, Ton- und Vibrationseinstellungen) werden ausschließlich lokal auf deinem Gerät im eigenen Speicherbereich der App abgelegt. Diese Daten enthalten keine personenbezogenen Informationen. Durch das Deinstallieren der App oder das Löschen der App-Daten in den Android-Einstellungen werden sie vollständig entfernt.</p>
+
+    <h3>Android-Sicherung</h3>
+    <p>Wenn auf deinem Gerät das Google-Backup aktiviert ist, kann Android die lokalen App-Daten in deinem Google-Konto sichern und bei einer Neuinstallation wiederherstellen. Diese Sicherung erfolgt durch Google gemäß der Datenschutzerklärung von Google; der Entwickler hat keinen Zugriff darauf. Du kannst das Backup in deinen Geräteeinstellungen deaktivieren.</p>
+
+    <h3>Berechtigungen</h3>
+    <p>Das Spiel verwendet ausschließlich die Vibrationsberechtigung des Geräts für haptisches Feedback. Du kannst die Vibration in den Spieleinstellungen ausschalten.</p>
+
+    <h3>Drittanbieter</h3>
+    <p>Das Spiel wurde mit der Unity-Engine entwickelt. Die Analyse-, Absturzberichts- und Diagnosedienste von Unity sind im Spiel deaktiviert, und da das Spiel niemals eine Internetverbindung herstellt, werden auch keine Daten an Unity übermittelt. Wenn du das Spiel über Google Play herunterlädst, kann Google im Rahmen seiner Store-Dienste gemäß seiner eigenen Datenschutzerklärung Informationen erheben; dies liegt außerhalb der Kontrolle des Spiels.</p>
+
+    <h3>Kinder</h3>
+    <p>Das Spiel richtet sich nicht an Kinder unter 13 Jahren (bzw. unter dem in deinem Land geltenden Mindestalter für die digitale Einwilligung). Das Spiel erhebt von Personen jeglichen Alters keine personenbezogenen Daten.</p>
+
+    <h3>Änderungen</h3>
+    <p>Sollte sich diese Richtlinie ändern, wird die aktualisierte Fassung auf dieser Seite veröffentlicht und das obige Datum angepasst. Falls dem Spiel künftig eine Funktion hinzugefügt wird, die Daten nutzt (z. B. Werbung oder Cloud-Speicherstände), wird diese Richtlinie vor der Veröffentlichung dieser Funktion aktualisiert.</p>
+
+    <h3>Kontakt</h3>
+    <p>Fragen: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>. Wenn du uns eine E-Mail schickst, werden deine E-Mail-Adresse und deine Nachricht ausschließlich zur Beantwortung deiner Anfrage verwendet, nicht an Dritte weitergegeben und innerhalb einer angemessenen Frist nach Klärung deines Anliegens gelöscht.</p>
+  </section>
+
+  <section id="fr-FR" data-lang="fr-FR" lang="fr">
+    <span id="fr"></span>
+    <h2>Politique de Confidentialité</h2>
+    <p class="meta">Date d'entrée en vigueur : 19 novembre 2026</p>
+    <p>Cette politique s'applique au jeu mobile Turing Gate (le « Jeu »), développé par VoronLabs.</p>
+    <div class="summary">
+      <ul>
+        <li>Le Jeu ne collecte, ne traite ni ne partage aucune donnée personnelle.</li>
+        <li>Le Jeu ne se connecte pas à Internet.</li>
+        <li>Il n'y a ni compte, ni connexion, ni publicité, ni outil d'analyse, ni achat intégré.</li>
+      </ul>
+    </div>
+
+    <h3>Données collectées</h3>
+    <p>Le Jeu ne collecte aucune donnée personnelle. Il n'accède à aucune information telle que votre nom, votre adresse e-mail, votre position, les identifiants de votre appareil, vos contacts ou vos fichiers, et n'envoie aucune donnée au développeur ou à des tiers.</p>
+
+    <h3>Connexion Internet</h3>
+    <p>Le Jeu fonctionne entièrement hors ligne. Il ne demande pas l'autorisation d'accès à Internet d'Android et ne peut donc envoyer aucune donnée via Internet.</p>
+
+    <h3>Données stockées sur votre appareil</h3>
+    <p>Votre progression et vos paramètres de jeu (jours atteints, score, crédits en jeu, contenu débloqué, préférences de langue, de son et de vibration) sont stockés uniquement sur votre appareil, dans l'espace de stockage propre à l'application. Ces données ne contiennent aucune information personnelle. La désinstallation de l'application ou l'effacement de ses données dans les paramètres Android les supprime définitivement.</p>
+
+    <h3>Sauvegarde Android</h3>
+    <p>Si la sauvegarde Google est activée sur votre appareil, Android peut sauvegarder les données locales de l'application sur votre compte Google et les restaurer lorsque vous réinstallez l'application. Cette sauvegarde est effectuée par Google conformément à sa propre politique de confidentialité ; le développeur n'y a pas accès. Vous pouvez la désactiver dans les paramètres de votre appareil.</p>
+
+    <h3>Autorisations</h3>
+    <p>Le Jeu utilise uniquement l'autorisation de vibration de l'appareil pour le retour haptique. Vous pouvez désactiver les vibrations dans les paramètres du Jeu.</p>
+
+    <h3>Services tiers</h3>
+    <p>Le Jeu est développé avec le moteur de jeu Unity. Les services d'analyse, de rapport de plantage et de diagnostic d'Unity sont désactivés dans le Jeu et, comme le Jeu ne se connecte jamais à Internet, aucune donnée n'est transmise à Unity. Lorsque vous téléchargez le Jeu depuis Google Play, Google peut collecter des informations pour ses services de boutique conformément à sa propre politique de confidentialité ; cela échappe au contrôle du Jeu.</p>
+
+    <h3>Enfants</h3>
+    <p>Le Jeu ne s'adresse pas aux enfants de moins de 13 ans (ou de l'âge de consentement numérique applicable dans votre pays). Le Jeu ne collecte de données personnelles auprès d'aucune personne, quel que soit son âge.</p>
+
+    <h3>Modifications</h3>
+    <p>En cas de modification de cette politique, la version mise à jour sera publiée sur cette page et la date ci-dessus sera actualisée. Si une fonctionnalité utilisant des données (par exemple des publicités ou des sauvegardes dans le cloud) est ajoutée au Jeu à l'avenir, cette politique sera mise à jour avant la publication de cette fonctionnalité.</p>
+
+    <h3>Contact</h3>
+    <p>Questions : <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>. Si vous nous envoyez un e-mail, votre adresse e-mail et votre message sont utilisés uniquement pour répondre à votre demande, ne sont pas partagés avec des tiers et sont supprimés dans un délai raisonnable après le traitement de votre demande.</p>
+  </section>
+
+  <section id="it-IT" data-lang="it-IT" lang="it">
+    <span id="it"></span>
+    <h2>Informativa sulla Privacy</h2>
+    <p class="meta">Data di entrata in vigore: 19 novembre 2026</p>
+    <p>La presente informativa si applica al gioco mobile Turing Gate (il "Gioco"), sviluppato da VoronLabs.</p>
+    <div class="summary">
+      <ul>
+        <li>Il Gioco non raccoglie, elabora né condivide alcun dato personale.</li>
+        <li>Il Gioco non si connette a Internet.</li>
+        <li>Non ci sono account, accessi, pubblicità, analisi o acquisti in-app.</li>
+      </ul>
+    </div>
+
+    <h3>Dati che raccogliamo</h3>
+    <p>Il Gioco non raccoglie alcun dato personale. Non accede a informazioni quali nome, email, posizione, identificatori del dispositivo, contatti o file e non invia alcun dato allo sviluppatore o a terze parti.</p>
+
+    <h3>Connessione a Internet</h3>
+    <p>Il Gioco funziona completamente offline. Non richiede l'autorizzazione di accesso a Internet di Android, pertanto non può inviare dati tramite Internet.</p>
+
+    <h3>Dati memorizzati sul dispositivo</h3>
+    <p>I progressi di gioco e le impostazioni (giorni raggiunti, punteggio, crediti di gioco, contenuti sbloccati, preferenze di lingua, audio e vibrazione) sono memorizzati esclusivamente sul tuo dispositivo, nello spazio di archiviazione dell'app. Questi dati non contengono informazioni personali. Disinstallando l'app o cancellando i dati dell'app nelle impostazioni di Android, tali dati vengono eliminati completamente.</p>
+
+    <h3>Backup di Android</h3>
+    <p>Se il backup di Google è attivo sul tuo dispositivo, Android può eseguire il backup dei dati locali dell'app sul tuo account Google e ripristinarli quando reinstalli l'app. Questo backup viene effettuato da Google secondo l'informativa sulla privacy di Google; lo sviluppatore non può accedervi. Puoi disattivarlo nelle impostazioni del dispositivo.</p>
+
+    <h3>Autorizzazioni</h3>
+    <p>Il Gioco utilizza esclusivamente l'autorizzazione di vibrazione del dispositivo per il feedback aptico. Puoi disattivare la vibrazione nelle impostazioni del Gioco.</p>
+
+    <h3>Terze parti</h3>
+    <p>Il Gioco è realizzato con il motore di gioco Unity. I servizi di analisi, segnalazione di arresti anomali e diagnostica di Unity sono disattivati nel Gioco e, poiché il Gioco non si connette mai a Internet, nessun dato raggiunge Unity. Quando scarichi il Gioco da Google Play, Google può raccogliere informazioni per i propri servizi dello store secondo la propria informativa sulla privacy; ciò è al di fuori del controllo del Gioco.</p>
+
+    <h3>Minori</h3>
+    <p>Il Gioco non è destinato a minori di 13 anni (o all'età del consenso digitale applicabile nel tuo Paese). Il Gioco non raccoglie dati personali da persone di alcuna età.</p>
+
+    <h3>Modifiche</h3>
+    <p>In caso di modifiche alla presente informativa, la versione aggiornata verrà pubblicata su questa pagina e la data sopra indicata verrà aggiornata. Se in futuro verrà aggiunta al Gioco una funzione che utilizza dati (ad esempio annunci pubblicitari o salvataggi nel cloud), la presente informativa verrà aggiornata prima del rilascio di tale funzione.</p>
+
+    <h3>Contatti</h3>
+    <p>Domande: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>. Se ci invii un'email, il tuo indirizzo email e il tuo messaggio verranno utilizzati esclusivamente per rispondere alla tua richiesta, non saranno condivisi con terze parti e verranno eliminati entro un periodo di tempo ragionevole dopo la risoluzione della richiesta.</p>
+  </section>
+
+  <section id="pl-PL" data-lang="pl-PL" lang="pl">
+    <span id="pl"></span>
+    <h2>Polityka Prywatności</h2>
+    <p class="meta">Data wejścia w życie: 19 listopada 2026 r.</p>
+    <p>Niniejsza polityka dotyczy gry mobilnej Turing Gate („Gra"), stworzonej przez VoronLabs.</p>
+    <div class="summary">
+      <ul>
+        <li>Gra nie zbiera, nie przetwarza ani nie udostępnia żadnych danych osobowych.</li>
+        <li>Gra nie łączy się z internetem.</li>
+        <li>W Grze nie ma kont, logowania, reklam, analityki ani zakupów w aplikacji.</li>
+      </ul>
+    </div>
+
+    <h3>Dane, które zbieramy</h3>
+    <p>Gra nie zbiera żadnych danych osobowych. Nie uzyskuje dostępu do informacji takich jak imię i nazwisko, adres e-mail, lokalizacja, identyfikatory urządzenia, kontakty czy pliki oraz nie wysyła żadnych danych do twórcy ani podmiotów trzecich.</p>
+
+    <h3>Połączenie z internetem</h3>
+    <p>Gra działa całkowicie offline. Nie prosi o uprawnienie dostępu do internetu w systemie Android, dlatego nie może przesyłać danych przez internet.</p>
+
+    <h3>Dane przechowywane na urządzeniu</h3>
+    <p>Postępy w grze i ustawienia (osiągnięte dni, wynik, kredyty w grze, odblokowana zawartość, preferencje języka, dźwięku i wibracji) są przechowywane wyłącznie na Twoim urządzeniu, we własnej pamięci aplikacji. Dane te nie zawierają informacji osobowych. Odinstalowanie aplikacji lub wyczyszczenie jej danych w ustawieniach systemu Android całkowicie je usuwa.</p>
+
+    <h3>Kopia zapasowa Androida</h3>
+    <p>Jeśli na Twoim urządzeniu włączona jest kopia zapasowa Google, system Android może tworzyć kopię zapasową lokalnych danych aplikacji na Twoim koncie Google i przywracać je po ponownym zainstalowaniu aplikacji. Kopia ta jest wykonywana przez Google zgodnie z polityką prywatności Google; twórca gry nie ma do niej dostępu. Możesz ją wyłączyć w ustawieniach urządzenia.</p>
+
+    <h3>Uprawnienia</h3>
+    <p>Gra korzysta wyłącznie z uprawnienia urządzenia do wibracji w celu zapewnienia efektów haptycznych. Wibracje można wyłączyć w ustawieniach Gry.</p>
+
+    <h3>Podmioty trzecie</h3>
+    <p>Gra została stworzona przy użyciu silnika Unity. Usługi analityczne, raportowania błędów i diagnostyki Unity są w Grze wyłączone, a ponieważ Gra nigdy nie łączy się z internetem, żadne dane nie trafiają do Unity. Gdy pobierasz Grę z Google Play, Google może zbierać informacje na potrzeby usług sklepu zgodnie ze swoją własną polityką prywatności; pozostaje to poza kontrolą Gry.</p>
+
+    <h3>Dzieci</h3>
+    <p>Gra nie jest skierowana do dzieci poniżej 13. roku życia (lub poniżej obowiązującego w Twoim kraju wieku zgody cyfrowej). Gra nie zbiera danych osobowych od osób w jakimkolwiek wieku.</p>
+
+    <h3>Zmiany</h3>
+    <p>W przypadku zmiany niniejszej polityki zaktualizowana wersja zostanie opublikowana na tej stronie, a powyższa data zostanie zmieniona. Jeśli w przyszłości do Gry zostanie dodana funkcja wykorzystująca dane (np. reklamy lub zapisy w chmurze), niniejsza polityka zostanie zaktualizowana przed udostępnieniem tej funkcji.</p>
+
+    <h3>Kontakt</h3>
+    <p>Pytania: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>. Jeśli wyślesz do nas wiadomość e-mail, Twój adres e-mail i treść wiadomości zostaną wykorzystane wyłącznie w celu udzielenia odpowiedzi na zapytanie, nie zostaną udostępnione podmiotom trzecim i zostaną usunięte w rozsądnym terminie po rozwiązaniu sprawy.</p>
+  </section>
+
+  <section id="id" data-lang="id" lang="id">
+    <h2>Kebijakan Privasi</h2>
+    <p class="meta">Tanggal berlaku: 19 November 2026</p>
+    <p>Kebijakan ini berlaku untuk game seluler Turing Gate ("Game") yang dikembangkan oleh VoronLabs.</p>
+    <div class="summary">
+      <ul>
+        <li>Game tidak mengumpulkan, memproses, atau membagikan data pribadi apa pun.</li>
+        <li>Game tidak terhubung ke internet.</li>
+        <li>Tidak ada akun, login, iklan, analitik, atau pembelian dalam aplikasi.</li>
+      </ul>
+    </div>
+
+    <h3>Data yang kami kumpulkan</h3>
+    <p>Game tidak mengumpulkan data pribadi apa pun. Game tidak mengakses informasi seperti nama, email, lokasi, pengidentifikasi perangkat, kontak, atau file Anda, serta tidak mengirimkan data apa pun kepada pengembang atau pihak ketiga.</p>
+
+    <h3>Koneksi internet</h3>
+    <p>Game bekerja sepenuhnya secara offline. Game tidak meminta izin akses internet Android, sehingga tidak dapat mengirim data melalui internet.</p>
+
+    <h3>Data yang disimpan di perangkat Anda</h3>
+    <p>Progres permainan dan pengaturan Anda (hari yang dicapai, skor, kredit dalam game, konten yang dibuka, preferensi bahasa, suara, dan getaran) hanya disimpan di perangkat Anda, di penyimpanan internal aplikasi. Data ini tidak berisi informasi pribadi. Mencopot pemasangan aplikasi atau menghapus data aplikasi di pengaturan Android akan menghapusnya secara permanen.</p>
+
+    <h3>Pencadangan Android</h3>
+    <p>Jika pencadangan Google diaktifkan di perangkat Anda, Android dapat mencadangkan data aplikasi di perangkat ke akun Google Anda dan memulihkannya saat Anda memasang ulang aplikasi. Pencadangan ini dilakukan oleh Google berdasarkan kebijakan privasi Google; pengembang tidak dapat mengaksesnya. Anda dapat menonaktifkannya di pengaturan perangkat Anda.</p>
+
+    <h3>Izin</h3>
+    <p>Game hanya menggunakan izin getaran perangkat untuk umpan balik haptik. Anda dapat mematikan getaran di pengaturan Game.</p>
+
+    <h3>Pihak ketiga</h3>
+    <p>Game dibuat menggunakan mesin game Unity. Layanan analitik, pelaporan kerusakan (crash), dan diagnostik Unity dinonaktifkan di dalam Game, dan karena Game tidak pernah terhubung ke internet, tidak ada data yang dikirim ke Unity. Saat Anda mengunduh Game dari Google Play, Google dapat mengumpulkan informasi untuk layanan tokonya berdasarkan kebijakan privasinya sendiri; hal ini berada di luar kendali Game.</p>
+
+    <h3>Anak-anak</h3>
+    <p>Game ini tidak ditujukan untuk anak-anak di bawah usia 13 tahun (atau usia persetujuan digital yang berlaku di negara Anda). Game tidak mengumpulkan data pribadi dari siapa pun dari segala usia.</p>
+
+    <h3>Perubahan</h3>
+    <p>Jika kebijakan ini berubah, versi terbaru akan dipublikasikan di halaman ini dan tanggal di atas akan diperbarui. Jika fitur yang menggunakan data (misalnya iklan atau penyimpanan cloud) ditambahkan ke dalam Game di masa mendatang, kebijakan ini akan diperbarui sebelum fitur tersebut dirilis.</p>
+
+    <h3>Kontak</h3>
+    <p>Pertanyaan: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>. Jika Anda mengirim email kepada kami, alamat email dan pesan Anda hanya digunakan untuk menanggapi pertanyaan Anda, tidak dibagikan kepada pihak ketiga, dan dihapus dalam jangka waktu yang wajar setelah permintaan Anda diselesaikan.</p>
+  </section>
+
+  <section id="vi" data-lang="vi" lang="vi">
+    <h2>Chính sách Quyền riêng tư</h2>
+    <p class="meta">Ngày có hiệu lực: 19 tháng 11 năm 2026</p>
+    <p>Chính sách này áp dụng cho trò chơi di động Turing Gate ("Trò chơi") do VoronLabs phát triển.</p>
+    <div class="summary">
+      <ul>
+        <li>Trò chơi không thu thập, xử lý hoặc chia sẻ bất kỳ dữ liệu cá nhân nào.</li>
+        <li>Trò chơi không kết nối internet.</li>
+        <li>Không có tài khoản, đăng nhập, quảng cáo, phân tích hay mua hàng trong ứng dụng.</li>
+      </ul>
+    </div>
+
+    <h3>Dữ liệu chúng tôi thu thập</h3>
+    <p>Trò chơi không thu thập bất kỳ dữ liệu cá nhân nào. Trò chơi không truy cập các thông tin như tên, email, vị trí, mã định danh thiết bị, danh bạ hoặc tệp của bạn, đồng thời không gửi bất kỳ dữ liệu nào cho nhà phát triển hoặc bên thứ ba.</p>
+
+    <h3>Kết nối internet</h3>
+    <p>Trò chơi hoạt động hoàn toàn ngoại tuyến (offline). Trò chơi không yêu cầu quyền truy cập internet của Android nên không thể gửi dữ liệu qua internet.</p>
+
+    <h3>Dữ liệu lưu trữ trên thiết bị của bạn</h3>
+    <p>Tiến trình chơi và cài đặt của bạn (số ngày đạt được, điểm số, tín dụng trong trò chơi, nội dung đã mở khóa, tùy chọn ngôn ngữ, âm thanh và rung) chỉ được lưu trữ trên thiết bị của bạn, trong bộ nhớ riêng của ứng dụng. Dữ liệu này không chứa thông tin cá nhân. Việc gỡ cài đặt ứng dụng hoặc xóa dữ liệu ứng dụng trong cài đặt Android sẽ xóa hoàn toàn dữ liệu này.</p>
+
+    <h3>Sao lưu Android</h3>
+    <p>Nếu tính năng sao lưu của Google được bật trên thiết bị của bạn, Android có thể sao lưu dữ liệu trên thiết bị của ứng dụng vào tài khoản Google của bạn và khôi phục khi bạn cài đặt lại ứng dụng. Việc sao lưu này do Google thực hiện theo chính sách quyền riêng tư của Google; nhà phát triển không thể truy cập dữ liệu đó. Bạn có thể tắt tính năng này trong cài đặt thiết bị.</p>
+
+    <h3>Quyền truy cập</h3>
+    <p>Trò chơi chỉ sử dụng quyền rung của thiết bị để tạo phản hồi xúc giác. Bạn có thể tắt rung trong phần cài đặt của Trò chơi.</p>
+
+    <h3>Bên thứ ba</h3>
+    <p>Trò chơi được xây dựng bằng công cụ trò chơi Unity. Các dịch vụ phân tích, báo cáo sự cố và chẩn đoán của Unity đều đã bị tắt trong Trò chơi, và vì Trò chơi không bao giờ kết nối internet nên cũng không có dữ liệu nào được gửi tới Unity. Khi bạn tải Trò chơi từ Google Play, Google có thể thu thập thông tin cho dịch vụ cửa hàng của mình theo chính sách quyền riêng tư riêng của Google; điều này nằm ngoài tầm kiểm soát của Trò chơi.</p>
+
+    <h3>Trẻ em</h3>
+    <p>Trò chơi không hướng đến trẻ em dưới 13 tuổi (hoặc độ tuổi đồng ý kỹ thuật số hiện hành tại quốc gia của bạn). Trò chơi không thu thập dữ liệu cá nhân từ bất kỳ ai ở bất kỳ độ tuổi nào.</p>
+
+    <h3>Thay đổi</h3>
+    <p>Nếu chính sách này thay đổi, phiên bản cập nhật sẽ được đăng trên trang này và ngày hiệu lực ở trên sẽ được cập nhật. Nếu một tính năng có sử dụng dữ liệu (ví dụ: quảng cáo hoặc lưu đám mây) được thêm vào Trò chơi trong tương lai, chính sách này sẽ được cập nhật trước khi tính năng đó được phát hành.</p>
+
+    <h3>Liên hệ</h3>
+    <p>Câu hỏi: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>. Nếu bạn gửi email cho chúng tôi, địa chỉ email và tin nhắn của bạn chỉ được sử dụng để phản hồi yêu cầu của bạn, không được chia sẻ với bên thứ ba và sẽ bị xóa trong khoảng thời gian hợp lý sau khi yêu cầu của bạn được giải quyết.</p>
+  </section>
+
+  <section id="ru-RU" data-lang="ru-RU" lang="ru">
+    <span id="ru"></span>
+    <h2>Политика конфиденциальности</h2>
+    <p class="meta">Дата вступления в силу: 19 ноября 2026 г.</p>
+    <p>Настоящая политика применяется к мобильной игре Turing Gate («Игра»), разработанной VoronLabs.</p>
+    <div class="summary">
+      <ul>
+        <li>Игра не собирает, не обрабатывает и не передаёт третьим лицам никакие персональные данные.</li>
+        <li>Игра не подключается к интернету.</li>
+        <li>В Игре нет учётных записей, входа в систему, рекламы, аналитики и встроенных покупок.</li>
+      </ul>
+    </div>
+
+    <h3>Какие данные мы собираем</h3>
+    <p>Игра не собирает никаких персональных данных. Она не запрашивает доступ к таким сведениям, как ваше имя, адрес электронной почты, местоположение, идентификаторы устройства, контакты или файлы, и не отправляет никаких данных разработчику или третьим лицам.</p>
+
+    <h3>Подключение к интернету</h3>
+    <p>Игра работает полностью автономно (офлайн). Она не запрашивает разрешение Android на доступ к интернету и поэтому не может передавать данные через интернет.</p>
+
+    <h3>Данные, хранящиеся на вашем устройстве</h3>
+    <p>Ваш игровой прогресс и настройки (пройденные дни, счёт, внутриигровые кредиты, открытый контент, настройки языка, звука и вибрации) хранятся только на вашем устройстве во внутреннем хранилище приложения. Эти данные не содержат персональной информации. Удаление приложения или очистка данных приложения в настройках Android полностью удаляет эти данные.</p>
+
+    <h3>Резервное копирование Android</h3>
+    <p>Если на вашем устройстве включено резервное копирование Google, система Android может сохранять локальные данные приложения в ваш аккаунт Google и восстанавливать их при повторной установке приложения. Это резервное копирование выполняется компанией Google в соответствии с политикой конфиденциальности Google; разработчик не имеет доступа к этим данным. Вы можете отключить резервное копирование в настройках устройства.</p>
+
+    <h3>Разрешения</h3>
+    <p>Игра использует только разрешение на вибрацию устройства для тактильной отдачи. Вы можете отключить вибрацию в настройках Игры.</p>
+
+    <h3>Сторонние сервисы</h3>
+    <p>Игра создана на игровом движке Unity. Службы аналитики, отчётов о сбоях и диагностики Unity в Игре отключены, а поскольку Игра никогда не подключается к интернету, никакие данные также не передаются в Unity. Когда вы загружаете Игру из Google Play, Google может собирать информацию для работы сервисов магазина в соответствии со своей собственной политикой конфиденциальности; это находится вне контроля Игры.</p>
+
+    <h3>Дети</h3>
+    <p>Игра не предназначена для детей младше 13 лет (или возраста цифрового согласия, действующего в вашей стране). Игра не собирает персональные данные пользователей любого возраста.</p>
+
+    <h3>Изменения</h3>
+    <p>В случае изменения настоящей политики обновлённая версия будет опубликована на этой странице, а дата вступления в силу выше будет обновлена. Если в будущем в Игру будет добавлена функция, использующая данные (например, реклама или облачные сохранения), эта политика будет обновлена до выхода такой функции.</p>
+
+    <h3>Контакты</h3>
+    <p>По всем вопросам: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>. Если вы напишете нам по электронной почте, ваш адрес и сообщение будут использованы исключительно для ответа на ваш запрос, не будут переданы третьим лицам и будут удалены в разумный срок после решения вашего вопроса.</p>
+  </section>
+
+  <section id="uk" data-lang="uk" lang="uk">
+    <h2>Політика конфіденційності</h2>
+    <p class="meta">Дата набрання чинності: 19 листопада 2026 р.</p>
+    <p>Ця політика застосовується до мобільної гри Turing Gate («Гра»), розробленої VoronLabs.</p>
+    <div class="summary">
+      <ul>
+        <li>Гра не збирає, не обробляє та не передає жодних персональних даних.</li>
+        <li>Гра не підключається до інтернету.</li>
+        <li>У Грі немає облікових записів, входу, реклами, аналітики чи внутрішньоігрових покупок.</li>
+      </ul>
+    </div>
+
+    <h3>Дані, які ми збираємо</h3>
+    <p>Гра не збирає жодних персональних даних. Вона не має доступу до такої інформації, як ваше ім'я, електронна пошта, місцезнаходження, ідентифікатори пристрою, контакти чи файли, і не надсилає жодних даних розробнику або третім сторонам.</p>
+
+    <h3>Підключення до інтернету</h3>
+    <p>Гра працює повністю офлайн. Вона не запитує дозвіл Android на доступ до інтернету, тому не може передавати дані через інтернет.</p>
+
+    <h3>Дані, що зберігаються на вашому пристрої</h3>
+    <p>Ваш ігровий прогрес і налаштування (досягнуті дні, рахунок, ігрові кредити, розблокований контент, налаштування мови, звуку та вібрації) зберігаються лише на вашому пристрої у власному сховищі застосунку. Ці дані не містять персональної інформації. Видалення застосунку або очищення даних застосунку в налаштуваннях Android повністю видаляє їх.</p>
+
+    <h3>Резервне копіювання Android</h3>
+    <p>Якщо на вашому пристрої ввімкнено резервне копіювання Google, система Android може створювати резервну копію локальних даних застосунку у вашому обліковому записі Google і відновлювати їх під час повторного встановлення застосунку. Це резервне копіювання виконується компанією Google відповідно до політики конфіденційності Google; розробник не має до нього доступу. Ви можете вимкнути його в налаштуваннях пристрою.</p>
+
+    <h3>Дозволи</h3>
+    <p>Гра використовує лише дозвіл на вібрацію пристрою для тактильного зворотного зв'язку. Ви можете вимкнути вібрацію в налаштуваннях Гри.</p>
+
+    <h3>Треті сторони</h3>
+    <p>Гру створено на ігровому рушії Unity. Служби аналітики, звітів про збої та діагностики Unity у Грі вимкнено, а оскільки Гра ніколи не підключається до інтернету, жодні дані не надходять і до Unity. Коли ви завантажуєте Гру з Google Play, Google може збирати інформацію для своїх сервісів магазину відповідно до власної політики конфіденційності; це перебуває поза контролем Гри.</p>
+
+    <h3>Діти</h3>
+    <p>Гра не призначена для дітей віком до 13 років (або відповідного віку цифрової згоди у вашій країні). Гра не збирає персональні дані від осіб будь-якого віку.</p>
+
+    <h3>Зміни</h3>
+    <p>Якщо ця політика зміниться, оновлену версію буде опубліковано на цій сторінці, а дату вище буде оновлено. Якщо в майбутньому до Гри буде додано функцію, що використовує дані (наприклад, рекламу або хмарні збереження), цю політику буде оновлено до виходу такої функції.</p>
+
+    <h3>Контакти</h3>
+    <p>Запитання: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>. Якщо ви надішлете нам електронного листа, ваша електронна адреса та повідомлення будуть використані виключно для відповіді на ваш запит, не передаватимуться третім сторонам і будуть видалені протягом розумного строку після вирішення вашого питання.</p>
+  </section>
+
+  <section id="el-GR" data-lang="el-GR" lang="el">
+    <span id="el"></span>
+    <h2>Πολιτική Απορρήτου</h2>
+    <p class="meta">Ημερομηνία ισχύος: 19 Νοεμβρίου 2026</p>
+    <p>Αυτή η πολιτική ισχύει για το παιχνίδι κινητών Turing Gate (το «Παιχνίδι»), που αναπτύχθηκε από τη VoronLabs.</p>
+    <div class="summary">
+      <ul>
+        <li>Το Παιχνίδι δεν συλλέγει, δεν επεξεργάζεται και δεν κοινοποιεί προσωπικά δεδομένα.</li>
+        <li>Το Παιχνίδι δεν συνδέεται στο διαδίκτυο.</li>
+        <li>Δεν υπάρχουν λογαριασμοί, σύνδεση, διαφημίσεις, αναλυτικά στοιχεία ή αγορές εντός εφαρμογής.</li>
+      </ul>
+    </div>
+
+    <h3>Δεδομένα που συλλέγουμε</h3>
+    <p>Το Παιχνίδι δεν συλλέγει κανένα προσωπικό δεδομένο. Δεν αποκτά πρόσβαση σε πληροφορίες όπως το όνομα, το email, την τοποθεσία, τα αναγνωριστικά συσκευής, τις επαφές ή τα αρχεία σας και δεν αποστέλλει δεδομένα στον δημιουργό ή σε τρίτους.</p>
+
+    <h3>Σύνδεση στο διαδίκτυο</h3>
+    <p>Το Παιχνίδι λειτουργεί πλήρως εκτός σύνδεσης (offline). Δεν ζητά την άδεια πρόσβασης στο διαδίκτυο του Android, επομένως δεν μπορεί να στείλει δεδομένα μέσω διαδικτύου.</p>
+
+    <h3>Δεδομένα που αποθηκεύονται στη συσκευή σας</h3>
+    <p>Η πρόοδος και οι ρυθμίσεις σας στο παιχνίδι (ημέρες που φτάσατε, βαθμολογία, μονάδες εντός παιχνιδιού, ξεκλειδωμένο περιεχόμενο, προτιμήσεις γλώσσας, ήχου και δόνησης) αποθηκεύονται μόνο στη συσκευή σας, στον ίδιο τον χώρο αποθήκευσης της εφαρμογής. Αυτά τα δεδομένα δεν περιέχουν προσωπικές πληροφορίες. Η απεγκατάσταση της εφαρμογής ή η εκκαθάριση των δεδομένων της στις ρυθμίσεις του Android τα διαγράφει οριστικά.</p>
+
+    <h3>Αντίγραφο ασφαλείας Android</h3>
+    <p>Εάν το αντίγραφο ασφαλείας Google είναι ενεργοποιημένο στη συσκευή σας, το Android ενδέχεται να δημιουργήσει αντίγραφο ασφαλείας των δεδομένων της εφαρμογής στον λογαριασμό σας Google και να τα επαναφέρει όταν επανεγκαταστήσετε την εφαρμογή. Αυτό το αντίγραφο ασφαλείας εκτελείται από την Google σύμφωνα με την πολιτική απορρήτου της Google· ο δημιουργός δεν έχει πρόσβαση σε αυτό. Μπορείτε να το απενεργοποιήσετε στις ρυθμίσεις της συσκευής σας.</p>
+
+    <h3>Άδειες</h3>
+    <p>Το Παιχνίδι χρησιμοποιεί μόνο την άδεια δόνησης της συσκευής για απτική ανάδραση. Μπορείτε να απενεργοποιήσετε τη δόνηση στις ρυθμίσεις του Παιχνιδιού.</p>
+
+    <h3>Τρίτα μέρη</h3>
+    <p>Το Παιχνίδι έχει κατασκευαστεί με τη μηχανή παιχνιδιών Unity. Οι υπηρεσίες αναλυτικών στοιχείων, αναφοράς σφαλμάτων και διαγνωστικών της Unity είναι απενεργοποιημένες στο Παιχνίδι και, επειδή το Παιχνίδι δεν συνδέεται ποτέ στο διαδίκτυο, κανένα δεδομένο δεν φτάνει ούτε στη Unity. Όταν κατεβάζετε το Παιχνίδι από το Google Play, η Google ενδέχεται να συλλέγει πληροφορίες για τις υπηρεσίες του καταστήματός της σύμφωνα με τη δική της πολιτική απορρήτου· αυτό βρίσκεται εκτός του ελέγχου του Παιχνιδιού.</p>
+
+    <h3>Παιδιά</h3>
+    <p>Το Παιχνίδι δεν απευθύνεται σε παιδιά κάτω των 13 ετών (ή της ισχύουσας ηλικίας ψηφιακής συναίνεσης στη χώρα σας). Το Παιχνίδι δεν συλλέγει προσωπικά δεδομένα από κανένα άτομο οποιασδήποτε ηλικίας.</p>
+
+    <h3>Αλλαγές</h3>
+    <p>Εάν αυτή η πολιτική αλλάξει, η ενημερωμένη έκδοση θα δημοσιευτεί σε αυτήν τη σελίδα και η παραπάνω ημερομηνία θα ενημερωθεί. Εάν προστεθεί στο μέλλον μια λειτουργία στο Παιχνίδι που χρησιμοποιεί δεδομένα (για παράδειγμα διαφημίσεις ή αποθήκευση στο cloud), αυτή η πολιτική θα ενημερωθεί πριν από την κυκλοφορία αυτής της λειτουργίας.</p>
+
+    <h3>Επικοινωνία</h3>
+    <p>Ερωτήσεις: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>. Εάν μας στείλετε email, η διεύθυνση email και το μήνυμά σας χρησιμοποιούνται αποκλειστικά για να απαντήσουμε στο αίτημά σας, δεν κοινοποιούνται σε τρίτους και διαγράφονται εντός εύλογου χρονικού διαστήματος μετά την επίλυση του αιτήματός σας.</p>
+  </section>
+
+  <section id="ja-JP" data-lang="ja-JP" lang="ja">
+    <span id="ja"></span>
+    <h2>プライバシーポリシー</h2>
+    <p class="meta">発効日：2026年11月19日</p>
+    <p>本ポリシーは、VoronLabs が開発したモバイルゲーム『Turing Gate』（以下「本ゲーム」）に適用されます。</p>
+    <div class="summary">
+      <ul>
+        <li>本ゲームは、個人データを一切収集・処理・共有しません。</li>
+        <li>本ゲームはインターネットに接続しません。</li>
+        <li>アカウント作成、ログイン、広告、アナリティクス、アプリ内課金はありません。</li>
+      </ul>
+    </div>
+
+    <h3>収集するデータ</h3>
+    <p>本ゲームはいかなる個人データも収集しません。氏名、メールアドレス、位置情報、デバイス識別子、連絡先、ファイルなどの情報にアクセスすることはなく、開発者や第三者にデータを送信することもありません。</p>
+
+    <h3>インターネット接続</h3>
+    <p>本ゲームは完全にオフラインで動作します。Android のインターネットアクセス権限を要求しないため、インターネット経由でデータを送信することはできません。</p>
+
+    <h3>お使いの端末に保存されるデータ</h3>
+    <p>ゲームの進行状況および設定（到達日数、スコア、ゲーム内クレジット、アンロック済みコンテンツ、言語・サウンド・振動の設定）は、お使いの端末内のアプリ専用ストレージにのみ保存されます。このデータには個人情報は一切含まれません。アプリをアンインストールするか、Android の設定からアプリのデータを消去すると完全に削除されます。</p>
+
+    <h3>Android バックアップ</h3>
+    <p>お使いの端末で Google バックアップが有効になっている場合、Android によって端末内のアプリデータが Google アカウントにバックアップされ、アプリの再インストール時に復元されることがあります。このバックアップは Google のプライバシーポリシーに基づいて Google によって行われるものであり、開発者がこのデータにアクセスすることはできません。端末の設定から無効にすることができます。</p>
+
+    <h3>権限</h3>
+    <p>本ゲームは触覚フィードバック（振動）のために端末のバイブレーション権限のみを使用します。振動はゲーム内の設定からオフにできます。</p>
+
+    <h3>第三者サービス</h3>
+    <p>本ゲームは Unity ゲームエンジンで制作されています。Unity のアナリティクス、クラッシュレポート、診断サービスは本ゲーム内で無効化されており、また本ゲームはインターネットに一切接続しないため、Unity にデータが送信されることもありません。Google Play から本ゲームをダウンロードする際、Google は独自のプライバシーポリシーに基づきストアサービスのために情報を収集する場合がありますが、これは本ゲームの管理外です。</p>
+
+    <h3>お子様について</h3>
+    <p>本ゲームは13歳未満（またはお住まいの国で適用されるデジタル同意年齢未満）のお子様を対象としていません。また、本ゲームはいかなる年齢の方からも個人データを収集しません。</p>
+
+    <h3>変更について</h3>
+    <p>本ポリシーが変更された場合は、更新版を本ページに掲載し、上記の発効日を更新します。将来、データを使用する機能（広告やクラウドセーブなど）が本ゲームに追加される場合は、その機能が公開される前に本ポリシーが更新されます。</p>
+
+    <h3>お問い合わせ</h3>
+    <p>ご質問・お問い合わせ：<a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>。メールでお問い合わせいただいた場合、お客様のメールアドレスとメッセージはお問い合わせへの回答のみに使用され、第三者と共有されることはなく、対応完了後、合理的な期間内に削除されます。</p>
+  </section>
+
+  <section id="ko-KR" data-lang="ko-KR" lang="ko">
+    <span id="ko"></span>
+    <h2>개인정보 처리방침</h2>
+    <p class="meta">시행일: 2026년 11월 19일</p>
+    <p>본 방침은 VoronLabs가 개발한 모바일 게임 Turing Gate(이하 "게임")에 적용됩니다.</p>
+    <div class="summary">
+      <ul>
+        <li>본 게임은 어떠한 개인정보도 수집, 처리 또는 공유하지 않습니다.</li>
+        <li>본 게임은 인터넷에 연결되지 않습니다.</li>
+        <li>계정, 로그인, 광고, 분석 도구 및 인앱 결제가 없습니다.</li>
+      </ul>
+    </div>
+
+    <h3>수집하는 정보</h3>
+    <p>본 게임은 개인정보를 일절 수집하지 않습니다. 이름, 이메일, 위치, 기기 식별자, 연락처 또는 파일과 같은 정보에 접근하지 않으며, 개발자나 제3자에게 어떠한 데이터도 전송하지 않습니다.</p>
+
+    <h3>인터넷 연결</h3>
+    <p>본 게임은 완전히 오프라인으로 작동합니다. Android의 인터넷 접근 권한을 요청하지 않으므로 인터넷을 통해 데이터를 전송할 수 없습니다.</p>
+
+    <h3>기기에 저장되는 데이터</h3>
+    <p>게임 진행 상황 및 설정(도달 일수, 점수, 게임 내 크레딧, 잠금 해제된 콘텐츠, 언어·사운드·진동 설정)은 오직 사용자의 기기 내 앱 전용 저장 공간에만 보관됩니다. 이 데이터에는 개인정보가 포함되지 않습니다. 앱을 삭제하거나 Android 설정에서 앱 데이터를 지우면 완전히 삭제됩니다.</p>
+
+    <h3>Android 백업</h3>
+    <p>기기에서 Google 백업이 켜져 있는 경우, Android가 기기 내 앱 데이터를 사용자의 Google 계정에 백업하고 앱을 다시 설치할 때 복원할 수 있습니다. 이 백업은 Google의 개인정보 처리방침에 따라 Google에서 수행하며, 개발자는 이에 접근할 수 없습니다. 기기 설정에서 백업을 끌 수 있습니다.</p>
+
+    <h3>권한</h3>
+    <p>본 게임은 햅틱 피드백을 위해 기기의 진동 권한만 사용합니다. 진동은 게임 설정에서 끌 수 있습니다.</p>
+
+    <h3>제3자 서비스</h3>
+    <p>본 게임은 Unity 게임 엔진으로 제작되었습니다. Unity의 분석, 충돌 보고 및 진단 서비스는 게임 내에서 비활성화되어 있으며, 게임이 인터넷에 전혀 연결되지 않으므로 Unity로도 데이터가 전송되지 않습니다. Google Play에서 게임을 다운로드할 때 Google은 자체 개인정보 처리방침에 따라 스토어 서비스를 위해 정보를 수집할 수 있으며, 이는 게임의 통제 범위 밖입니다.</p>
+
+    <h3>아동</h3>
+    <p>본 게임은 만 13세 미만(또는 거주 국가에서 적용되는 디지털 동의 연령 미만)의 아동을 대상으로 하지 않습니다. 본 게임은 모든 연령대의 누구로부터도 개인정보를 수집하지 않습니다.</p>
+
+    <h3>변경 사항</h3>
+    <p>본 방침이 변경될 경우 업데이트된 버전이 이 페이지에 게시되며 상단의 시행일이 갱신됩니다. 향후 데이터를 사용하는 기능(예: 광고 또는 클라우드 저장)이 게임에 추가되는 경우 해당 기능이 출시되기 전에 본 방침이 업데이트됩니다.</p>
+
+    <h3>문의</h3>
+    <p>문의 사항: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>. 이메일로 문의하시는 경우 귀하의 이메일 주소와 메시지 내용은 문의에 답변하는 목적으로만 사용되며, 제3자와 공유되지 않고 요청 처리가 완료된 후 합리적인 기간 내에 삭제됩니다.</p>
+  </section>
+
+  <section id="zh-CN" data-lang="zh-CN" lang="zh-CN">
+    <span id="zh"></span>
+    <h2>隐私政策</h2>
+    <p class="meta">生效日期：2026年11月19日</p>
+    <p>本政策适用于由 VoronLabs 开发的移动游戏《Turing Gate》（以下简称“本游戏”）。</p>
+    <div class="summary">
+      <ul>
+        <li>本游戏不收集、不处理、也不与任何方共享任何个人数据。</li>
+        <li>本游戏不连接互联网。</li>
+        <li>本游戏没有账号、登录、广告、统计分析或应用内购买。</li>
+      </ul>
+    </div>
+
+    <h3>我们收集的数据</h3>
+    <p>本游戏不收集任何个人数据。本游戏不会访问您的姓名、电子邮件、位置、设备标识符、通讯录或文件等信息，也不会向开发者或任何第三方发送任何数据。</p>
+
+    <h3>互联网连接</h3>
+    <p>本游戏完全离线运行。它不请求 Android 的互联网访问权限，因此无法通过互联网发送任何数据。</p>
+
+    <h3>存储在您设备上的数据</h3>
+    <p>您的游戏进度和设置（到达天数、分数、游戏内点数、已解锁内容以及语言、声音和振动偏好）仅保存在您的设备本地、应用的私有存储空间中。这些数据不包含任何个人信息。卸载应用或在 Android 设置中清除应用数据即可将其完全删除。</p>
+
+    <h3>Android 备份</h3>
+    <p>如果您的设备开启了 Google 备份功能，Android 可能会将应用在设备本地的数据备份到您的 Google 账号，并在您重新安装应用时予以恢复。此备份由 Google 根据其隐私政策执行，开发者无法访问这些数据。您可以在设备设置中关闭此备份功能。</p>
+
+    <h3>权限</h3>
+    <p>本游戏仅使用设备的振动权限以提供触觉反馈。您可以在游戏设置中关闭振动。</p>
+
+    <h3>第三方</h3>
+    <p>本游戏使用 Unity 游戏引擎开发。Unity 的分析、崩溃报告和诊断服务已在本游戏中关闭，且由于本游戏从不连接互联网，没有任何数据会发送至 Unity。当您从 Google Play 下载本游戏时，Google 可能会根据其自身的隐私政策收集用于其商店服务的信息，这不在本游戏的控制范围内。</p>
+
+    <h3>儿童</h3>
+    <p>本游戏不面向 13 周岁以下（或您所在国家/地区适用的数字同意年龄以下）的儿童。本游戏不会收集任何年龄段任何人的个人数据。</p>
+
+    <h3>政策变更</h3>
+    <p>如果本政策发生变更，更新后的版本将发布在本页面上，并更新上方的生效日期。如果未来向本游戏添加需要使用数据的功能（例如广告或云存档），我们将在该功能发布之前更新本政策。</p>
+
+    <h3>联系方式</h3>
+    <p>如有疑问，请联系：<a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>。如果您向我们发送电子邮件，您的电子邮箱地址和邮件内容仅用于回复您的咨询，不会与任何第三方共享，并将在您的请求处理完毕后的合理期限内删除。</p>
+  </section>
+
+  <section id="ar" data-lang="ar" lang="ar" dir="rtl">
+    <h2>سياسة الخصوصية</h2>
+    <p class="meta">تاريخ السريان: 19 نوفمبر 2026</p>
+    <p>تنطبق هذه السياسة على لعبة الهاتف المحمول Turing Gate ("اللعبة") التي طورتها VoronLabs.</p>
+    <div class="summary">
+      <ul>
+        <li>لا تجمع اللعبة أي بيانات شخصية ولا تعالجها ولا تشاركها مع أي طرف.</li>
+        <li>لا تتصل اللعبة بالإنترنت.</li>
+        <li>لا توجد حسابات أو تسجيل دخول أو إعلانات أو تحليلات أو عمليات شراء داخل التطبيق.</li>
+      </ul>
+    </div>
+
+    <h3>البيانات التي نجمعها</h3>
+    <p>لا تجمع اللعبة أي بيانات شخصية على الإطلاق. ولا تصل إلى معلومات مثل اسمك أو بريدك الإلكتروني أو موقعك الجغرافي أو معرّفات الجهاز أو جهات الاتصال أو الملفات، ولا ترسل أي بيانات إلى المطوّر أو إلى أطراف ثالثة.</p>
+
+    <h3>الاتصال بالإنترنت</h3>
+    <p>تعمل اللعبة بالكامل دون اتصال بالإنترنت (أوفلاين). وهي لا تطلب إذن الوصول إلى الإنترنت في نظام Android، ولذلك لا يمكنها إرسال أي بيانات عبر الإنترنت.</p>
+
+    <h3>البيانات المخزنة على جهازك</h3>
+    <p>يتم حفظ تقدمك في اللعبة وإعداداتك (الأيام التي وصلت إليها، النقاط، الأرصدة داخل اللعبة، المحتوى المفتوح، وتفضيلات اللغة والصوت والاهتزاز) على جهازك فقط، في مساحة التخزين الخاصة بالتطبيق. لا تحتوي هذه البيانات على أي معلومات شخصية. يؤدي إلغاء تثبيت التطبيق أو مسح بياناته من إعدادات Android إلى حذفها بالكامل.</p>
+
+    <h3>النسخ الاحتياطي في Android</h3>
+    <p>إذا كان النسخ الاحتياطي من Google مفعّلاً على جهازك، فقد يقوم نظام Android بعمل نسخة احتياطية من بيانات التطبيق المحلية على حساب Google الخاص بك واستعادتها عند إعادة تثبيت التطبيق. يتم هذا النسخ الاحتياطي بواسطة Google وفقاً لسياسة خصوصية Google، ولا يمكن للمطوّر الوصول إليه. يمكنك إيقاف تشغيله من إعدادات جهازك.</p>
+
+    <h3>الأذونات</h3>
+    <p>تستخدم اللعبة إذن الاهتزاز في الجهاز فقط لتوفير الاستجابة اللمسية. يمكنك إيقاف الاهتزاز من إعدادات اللعبة.</p>
+
+    <h3>الأطراف الثالثة</h3>
+    <p>تم تطوير اللعبة باستخدام محرك الألعاب Unity. تم إيقاف خدمات التحليلات وتقارير الأعطال والتشخيص الخاصة بـ Unity داخل اللعبة، ولأن اللعبة لا تتصل بالإنترنت أبداً، فلا تصل أي بيانات إلى Unity أيضاً. عند تنزيل اللعبة من Google Play، قد تجمع Google معلومات لخدمات المتجر الخاصة بها بموجب سياسة الخصوصية الخاصة بها؛ وهذا خارج عن سيطرة اللعبة.</p>
+
+    <h3>الأطفال</h3>
+    <p>اللعبة غير موجّهة للأطفال دون سن 13 عاماً (أو سن الموافقة الرقمية المعمول به في بلدك). ولا تجمع اللعبة بيانات شخصية من أي شخص من أي عمر.</p>
+
+    <h3>التغييرات</h3>
+    <p>إذا تغيرت هذه السياسة، فسيتم نشر النسخة المحدّثة على هذه الصفحة وتحديث التاريخ المذكور أعلاه. وإذا تمت إضافة ميزة تستخدم البيانات إلى اللعبة في المستقبل (مثل الإعلانات أو الحفظ السحابي)، فسيتم تحديث هذه السياسة قبل إطلاق تلك الميزة.</p>
+
+    <h3>التواصل</h3>
+    <p>للاستفسارات: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>. إذا راسلتنا عبر البريد الإلكتروني، فسيتم استخدام عنوان بريدك الإلكتروني ورسالتك فقط للرد على استفسارك، ولن تتم مشاركتهما مع أطراف ثالثة، وسيتم حذفهما خلال فترة زمنية معقولة بعد معالجة طلبك.</p>
+  </section>
+
+  <section id="fa" data-lang="fa" lang="fa" dir="rtl">
+    <h2>سیاست حفظ حریم خصوصی</h2>
+    <p class="meta">تاریخ اجرا: ۱۹ نوامبر ۲۰۲۶</p>
+    <p>این سیاست برای بازی موبایل Turing Gate («بازی») که توسط VoronLabs توسعه یافته است اعمال می‌شود.</p>
+    <div class="summary">
+      <ul>
+        <li>این بازی هیچ‌گونه داده شخصی را جمع‌آوری، پردازش یا با کسی به اشتراک نمی‌گذارد.</li>
+        <li>این بازی به اینترنت متصل نمی‌شود.</li>
+        <li>هیچ حساب کاربری، ورود به سیستم، تبلیغات، تحلیل آماری یا خرید درون‌برنامه‌ای وجود ندارد.</li>
+      </ul>
+    </div>
+
+    <h3>داده‌هایی که جمع‌آوری می‌کنیم</h3>
+    <p>بازی هیچ داده شخصی را جمع‌آوری نمی‌کند. به اطلاعاتی مانند نام، ایمیل، موقعیت مکانی، شناسه‌های دستگاه، مخاطبین یا فایل‌های شما دسترسی ندارد و هیچ داده‌ای را برای توسعه‌دهنده یا اشخاص ثالث ارسال نمی‌کند.</p>
+
+    <h3>اتصال به اینترنت</h3>
+    <p>بازی کاملاً آفلاین کار می‌کند. مجوز دسترسی به اینترنت اندروید را درخواست نمی‌کند و بنابراین نمی‌تواند داده‌ای را از طریق اینترنت ارسال کند.</p>
+
+    <h3>داده‌های ذخیره‌شده روی دستگاه شما</h3>
+    <p>پیشرفت بازی و تنظیمات شما (روزهای طی‌شده، امتیاز، اعتبار درون بازی، محتوای بازشده، تنظیمات زبان، صدا و لرزش) تنها روی دستگاه شما و در فضای ذخیره‌سازی اختصاصی برنامه نگهداری می‌شوند. این داده‌ها حاوی هیچ اطلاعات شخصی نیستند. حذف نصب برنامه یا پاک کردن داده‌های برنامه از تنظیمات اندروید، آن‌ها را به‌طور کامل حذف می‌کند.</p>
+
+    <h3>پشتیبان‌گیری اندروید</h3>
+    <p>اگر پشتیبان‌گیری Google در دستگاه شما فعال باشد، ممکن است اندروید از داده‌های محلی برنامه در حساب Google شما نسخه پشتیبان تهیه کرده و هنگام نصب مجدد برنامه آن‌ها را بازیابی کند. این پشتیبان‌گیری توسط Google و طبق سیاست حریم خصوصی Google انجام می‌شود و توسعه‌دهنده به آن دسترسی ندارد. می‌توانید آن را از تنظیمات دستگاه خود غیرفعال کنید.</p>
+
+    <h3>مجوزها</h3>
+    <p>بازی فقط از مجوز لرزش (ویبره) دستگاه برای بازخورد لمسی استفاده می‌کند. می‌توانید لرزش را از تنظیمات بازی خاموش کنید.</p>
+
+    <h3>اشخاص ثالث</h3>
+    <p>این بازی با موتور بازی‌سازی Unity ساخته شده است. سرویس‌های تحلیل، گزارش خرابی و عیب‌یابی Unity در بازی غیرفعال هستند و از آنجا که بازی هرگز به اینترنت متصل نمی‌شود، هیچ داده‌ای نیز به Unity ارسال نمی‌گردد. هنگام دانلود بازی از Google Play، ممکن است Google طبق سیاست حریم خصوصی خود اطلاعاتی را برای خدمات فروشگاه خود جمع‌آوری کند؛ این موضوع خارج از کنترل بازی است.</p>
+
+    <h3>کودکان</h3>
+    <p>این بازی برای کودکان زیر ۱۳ سال (یا سن رضایت دیجیتال قابل اجرا در کشور شما) طراحی نشده است. بازی از هیچ فردی در هیچ سنی داده شخصی جمع‌آوری نمی‌کند.</p>
+
+    <h3>تغییرات</h3>
+    <p>در صورت تغییر این سیاست، نسخه به‌روزشده در همین صفحه منتشر خواهد شد و تاریخ بالا به‌روزرسانی می‌شود. اگر در آینده قابلیتی که از داده استفاده می‌کند (مانند تبلیغات یا ذخیره ابری) به بازی اضافه شود، این سیاست پیش از انتشار آن قابلیت به‌روزرسانی خواهد شد.</p>
+
+    <h3>تماس</h3>
+    <p>سؤالات: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>. اگر به ما ایمیل بزنید، نشانی ایمیل و پیام شما صرفاً برای پاسخگویی به درخواستتان استفاده می‌شود، با اشخاص ثالث به اشتراک گذاشته نمی‌شود و پس از رسیدگی به درخواست شما در مدت‌زمانی معقول حذف خواهد شد.</p>
+  </section>
+
+  <section id="iw-IL" data-lang="iw-IL" lang="he" dir="rtl">
+    <span id="he"></span>
+    <span id="iw"></span>
+    <h2>מדיניות פרטיות</h2>
+    <p class="meta">תאריך תחילה: 19 בנובמבר 2026</p>
+    <p>מדיניות זו חלה על משחק המובייל Turing Gate ("המשחק") שפותח על ידי VoronLabs.</p>
+    <div class="summary">
+      <ul>
+        <li>המשחק אינו אוסף, מעבד או משתף מידע אישי כלשהו.</li>
+        <li>המשחק אינו מתחבר לאינטרנט.</li>
+        <li>אין חשבונות, התחברות, פרסומות, שירותי אנליטיקה או רכישות בתוך האפליקציה.</li>
+      </ul>
+    </div>
+
+    <h3>מידע שאנו אוספים</h3>
+    <p>המשחק אינו אוסף מידע אישי כלל. הוא אינו ניגש למידע כגון שמך, כתובת האימייל שלך, מיקומך, מזהי מכשיר, אנשי קשר או קבצים, ואינו שולח מידע כלשהו למפתח או לצדדים שלישיים.</p>
+
+    <h3>חיבור לאינטרנט</h3>
+    <p>המשחק פועל באופן לא מקוון (אופליין) לחלוטין. הוא אינו מבקש הרשאת גישה לאינטרנט ב-Android, ולכן אינו יכול לשלוח נתונים דרך האינטרנט.</p>
+
+    <h3>נתונים הנשמרים במכשיר שלך</h3>
+    <p>ההתקדמות וההגדרות שלך במשחק (ימים שהושגו, ניקוד, קרדיטים במשחק, תוכן שנפתח, והעדפות שפה, צליל ורטט) נשמרים אך ורק במכשיר שלך, באחסון הפנימי של האפליקציה. נתונים אלה אינם מכילים מידע אישי. הסרת ההתקנה של האפליקציה או ניקוי נתוני האפליקציה בהגדרות Android מוחקים אותם לחלוטין.</p>
+
+    <h3>גיבוי Android</h3>
+    <p>אם גיבוי Google מופעל במכשיר שלך, מערכת Android עשויה לגבות את נתוני האפליקציה שבמכשיר אל חשבון Google שלך ולשחזר אותם בעת התקנה מחדש של האפליקציה. גיבוי זה מתבצע על ידי Google בהתאם למדיניות הפרטיות של Google; למפתח אין גישה אליו. ניתן לכבות אותו בהגדרות המכשיר שלך.</p>
+
+    <h3>הרשאות</h3>
+    <p>המשחק משתמש אך ורק בהרשאת הרטט של המכשיר לצורך משוב מגע (רטט). ניתן לכבות את הרטט בהגדרות המשחק.</p>
+
+    <h3>צדדים שלישיים</h3>
+    <p>המשחק נבנה באמצעות מנוע המשחקים Unity. שירותי האנליטיקה, דיווחי הקריסות והאבחון של Unity כבויים במשחק, ומכיוון שהמשחק לעולם אינו מתחבר לאינטרנט, שום מידע אינו מגיע גם אל Unity. כאשר אתה מוריד את המשחק מ-Google Play, חברת Google עשויה לאסוף מידע עבור שירותי החנות שלה בהתאם למדיניות הפרטיות שלה; דבר זה אינו בשליטת המשחק.</p>
+
+    <h3>ילדים</h3>
+    <p>המשחק אינו מיועד לילדים מתחת לגיל 13 (או גיל ההסכמה הדיגיטלית החל במדינתך). המשחק אינו אוסף מידע אישי מאף אדם בכל גיל.</p>
+
+    <h3>שינויים</h3>
+    <p>אם מדיניות זו תשתנה, הגרסה המעודכנת תפורסם בדף זה והתאריך שלמעלה יעודכן. אם תתווסף למשחק בעתיד תכונה המשתמשת בנתונים (למשל פרסומות או שמירה בענן), מדיניות זו תעודכן לפני שתכונה זו תשוחרר.</p>
+
+    <h3>יצירת קשר</h3>
+    <p>לשאלות: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>. אם תשלח לנו אימייל, כתובת האימייל וההודעה שלך ישמשו אך ורק כדי להשיב לפנייתך, לא ישותפו עם צדדים שלישיים ויימחקו תוך פרק זמן סביר לאחר שהטיפול בפנייתך יסתיים.</p>
+  </section>
+
+  <section id="hi-IN" data-lang="hi-IN" lang="hi">
+    <span id="hi"></span>
+    <h2>गोपनीयता नीति</h2>
+    <p class="meta">प्रभावी तिथि: 19 नवंबर 2026</p>
+    <p>यह नीति VoronLabs द्वारा विकसित मोबाइल गेम Turing Gate ("गेम") पर लागू होती है।</p>
+    <div class="summary">
+      <ul>
+        <li>यह गेम कोई भी व्यक्तिगत डेटा एकत्र, संसाधित या किसी के साथ साझा नहीं करता है।</li>
+        <li>यह गेम इंटरनेट से कनेक्ट नहीं होता है।</li>
+        <li>इसमें कोई खाता, साइन-इन, विज्ञापन, एनालिटिक्स या इन-ऐप खरीदारी नहीं है।</li>
+      </ul>
+    </div>
+
+    <h3>डेटा जो हम एकत्र करते हैं</h3>
+    <p>गेम कोई भी व्यक्तिगत डेटा एकत्र नहीं करता है। यह आपके नाम, ईमेल, स्थान, डिवाइस पहचानकर्ता, संपर्क या फ़ाइलों जैसी जानकारी तक पहुँच प्राप्त नहीं करता है, और डेवलपर या किसी तीसरे पक्ष को कोई डेटा नहीं भेजता है।</p>
+
+    <h3>इंटरनेट कनेक्शन</h3>
+    <p>यह गेम पूरी तरह से ऑफ़लाइन काम करता है। यह Android की इंटरनेट एक्सेस अनुमति नहीं माँगता है, इसलिए यह इंटरनेट के माध्यम से डेटा नहीं भेज सकता है।</p>
+
+    <h3>आपके डिवाइस पर संग्रहीत डेटा</h3>
+    <p>आपकी गेम प्रगति और सेटिंग्स (पहुँचे गए दिन, स्कोर, इन-गेम क्रेडिट, अनलॉक की गई सामग्री, भाषा, ध्वनि और कंपन प्राथमिकताएँ) केवल आपके डिवाइस पर, ऐप के अपने स्टोरेज में सहेजी जाती हैं। इस डेटा में कोई व्यक्तिगत जानकारी नहीं होती है। ऐप को अनइंस्टॉल करने या Android सेटिंग्स में ऐप का डेटा साफ़ करने से यह पूरी तरह से मिट जाता है।</p>
+
+    <h3>Android बैकअप</h3>
+    <p>यदि आपके डिवाइस पर Google बैकअप चालू है, तो Android ऐप के डिवाइस पर मौजूद डेटा का आपके Google खाते में बैकअप ले सकता है और ऐप को पुनः इंस्टॉल करने पर उसे पुनर्स्थापित कर सकता है। यह बैकअप Google द्वारा Google की गोपनीयता नीति के तहत किया जाता है; डेवलपर इस तक नहीं पहुँच सकता। आप इसे अपने डिवाइस की सेटिंग्स में बंद कर सकते हैं।</p>
+
+    <h3>अनुमतियाँ</h3>
+    <p>गेम केवल हैप्टिक फ़ीडबैक के लिए डिवाइस की कंपन (वाइब्रेशन) अनुमति का उपयोग करता है। आप गेम की सेटिंग्स में कंपन को बंद कर सकते हैं।</p>
+
+    <h3>तृतीय पक्ष</h3>
+    <p>यह गेम Unity गेम इंजन के साथ बनाया गया है। गेम में Unity की एनालिटिक्स, क्रैश रिपोर्टिंग और डायग्नोस्टिक्स सेवाएँ बंद हैं, और चूँकि गेम कभी भी इंटरनेट से कनेक्ट नहीं होता है, इसलिए Unity तक भी कोई डेटा नहीं पहुँचता है। जब आप Google Play से गेम डाउनलोड करते हैं, तो Google अपनी गोपनीयता नीति के तहत अपनी स्टोर सेवाओं के लिए जानकारी एकत्र कर सकता है; यह गेम के नियंत्रण से बाहर है।</p>
+
+    <h3>बच्चे</h3>
+    <p>यह गेम 13 वर्ष से कम आयु (या आपके देश में लागू डिजिटल सहमति की आयु से कम) के बच्चों के लिए निर्देशित नहीं है। गेम किसी भी आयु के किसी भी व्यक्ति से व्यक्तिगत डेटा एकत्र नहीं करता है।</p>
+
+    <h3>परिवर्तन</h3>
+    <p>यदि इस नीति में बदलाव होता है, तो अद्यतन संस्करण इस पृष्ठ पर प्रकाशित किया जाएगा और ऊपर दी गई तिथि अपडेट कर दी जाएगी। यदि भविष्य में गेम में डेटा का उपयोग करने वाली कोई सुविधा (उदाहरण के लिए विज्ञापन या क्लाउड सेव) जोड़ी जाती है, तो उस सुविधा के रिलीज़ होने से पहले इस नीति को अपडेट किया जाएगा।</p>
+
+    <h3>संपर्क</h3>
+    <p>प्रश्नों के लिए: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a>। यदि आप हमें ईमेल करते हैं, तो आपका ईमेल पता और संदेश केवल आपकी पूछताछ का उत्तर देने के लिए उपयोग किया जाता है, किसी तीसरे पक्ष के साथ साझा नहीं किया जाता है, और आपके अनुरोध का समाधान होने के बाद उचित समय के भीतर हटा दिया जाता है।</p>
+  </section>
+
+  <section id="th" data-lang="th" lang="th">
+    <h2>นโยบายความเป็นส่วนตัว</h2>
+    <p class="meta">วันที่มีผลบังคับใช้: 19 พฤศจิกายน 2026</p>
+    <p>นโยบายนี้ใช้กับเกมมือถือ Turing Gate ("เกม") ที่พัฒนาโดย VoronLabs</p>
+    <div class="summary">
+      <ul>
+        <li>เกมนี้ไม่เก็บรวบรวม ประมวลผล หรือแบ่งปันข้อมูลส่วนบุคคลใดๆ</li>
+        <li>เกมนี้ไม่เชื่อมต่ออินเทอร์เน็ต</li>
+        <li>ไม่มีระบบบัญชี การลงชื่อเข้าใช้ โฆษณา การวิเคราะห์ข้อมูล หรือการซื้อภายในแอป</li>
+      </ul>
+    </div>
+
+    <h3>ข้อมูลที่เราเก็บรวบรวม</h3>
+    <p>เกมไม่เก็บรวบรวมข้อมูลส่วนบุคคลใดๆ ทั้งสิ้น โดยจะไม่เข้าถึงข้อมูล เช่น ชื่อ อีเมล ตำแหน่งที่ตั้ง รหัสประจำอุปกรณ์ รายชื่อผู้ติดต่อ หรือไฟล์ของคุณ และไม่ส่งข้อมูลใดๆ ไปยังผู้พัฒนาหรือบุคคลที่สาม</p>
+
+    <h3>การเชื่อมต่ออินเทอร์เน็ต</h3>
+    <p>เกมทำงานแบบออฟไลน์ทั้งหมด โดยไม่ขอสิทธิ์การเข้าถึงอินเทอร์เน็ตของ Android จึงไม่สามารถส่งข้อมูลผ่านอินเทอร์เน็ตได้</p>
+
+    <h3>ข้อมูลที่จัดเก็บไว้ในอุปกรณ์ของคุณ</h3>
+    <p>ความคืบหน้าและการตั้งค่าในเกมของคุณ (จำนวนวันที่ไปถึง คะแนน เครดิตในเกม เนื้อหาที่ปลดล็อก และการตั้งค่าภาษา เสียง และการสั่น) จะถูกจัดเก็บไว้ในอุปกรณ์ของคุณเท่านั้น ในพื้นที่จัดเก็บข้อมูลของแอปเอง ข้อมูลนี้ไม่มีข้อมูลส่วนบุคคล การถอนการติดตั้งแอปหรือการล้างข้อมูลแอปในการตั้งค่า Android จะลบข้อมูลนี้ออกอย่างสมบูรณ์</p>
+
+    <h3>การสำรองข้อมูลของ Android</h3>
+    <p>หากเปิดการสำรองข้อมูลของ Google ไว้ในอุปกรณ์ของคุณ ระบบ Android อาจสำรองข้อมูลภายในเครื่องของแอปไปยังบัญชี Google ของคุณ และกู้คืนข้อมูลเมื่อคุณติดตั้งแอปใหม่อีกครั้ง การสำรองข้อมูลนี้ดำเนินการโดย Google ภายใต้นโยบายความเป็นส่วนตัวของ Google ซึ่งผู้พัฒนาไม่สามารถเข้าถึงได้ คุณสามารถปิดการสำรองข้อมูลนี้ได้ในการตั้งค่าอุปกรณ์ของคุณ</p>
+
+    <h3>สิทธิ์การเข้าถึง</h3>
+    <p>เกมใช้สิทธิ์การสั่นของอุปกรณ์เพื่อการตอบสนองแบบสั่น (Haptic Feedback) เท่านั้น คุณสามารถปิดการสั่นได้ในการตั้งค่าของเกม</p>
+
+    <h3>บุคคลที่สาม</h3>
+    <p>เกมนี้สร้างขึ้นด้วยเอนจินเกม Unity บริการวิเคราะห์ข้อมูล การรายงานข้อผิดพลาด และการวินิจฉัยของ Unity ถูกปิดใช้งานในเกม และเนื่องจากเกมไม่เชื่อมต่ออินเทอร์เน็ตเลย จึงไม่มีข้อมูลใดๆ ส่งไปยัง Unity เช่นกัน เมื่อคุณดาวน์โหลดเกมจาก Google Play ทาง Google อาจเก็บรวบรวมข้อมูลสำหรับบริการร้านค้าภายใต้นโยบายความเป็นส่วนตัวของ Google เอง ซึ่งอยู่นอกเหนือการควบคุมของเกม</p>
+
+    <h3>เด็ก</h3>
+    <p>เกมนี้ไม่ได้มุ่งเน้นสำหรับเด็กอายุต่ำกว่า 13 ปี (หรืออายุขั้นต่ำในการให้ความยินยอมทางดิจิทัลที่มีผลบังคับใช้ในประเทศของคุณ) เกมไม่เก็บรวบรวมข้อมูลส่วนบุคคลจากบุคคลใดๆ ในทุกช่วงอายุ</p>
+
+    <h3>การเปลี่ยนแปลง</h3>
+    <p>หากนโยบายนี้มีการเปลี่ยนแปลง เวอร์ชันที่อัปเดตจะถูกเผยแพร่บนหน้านี้และวันที่ด้านบนจะได้รับการปรับปรุง หากในอนาคตมีการเพิ่มฟีเจอร์ที่ใช้ข้อมูล (เช่น โฆษณา หรือการบันทึกข้อมูลบนคลาวด์) ลงในเกม นโยบายนี้จะได้รับการอัปเดตก่อนที่ฟีเจอร์นั้นจะเปิดให้ใช้งาน</p>
+
+    <h3>ติดต่อเรา</h3>
+    <p>สอบถามข้อมูล: <a href="mailto:voronlabs1@gmail.com">voronlabs1@gmail.com</a> หากคุณส่งอีเมลถึงเรา ที่อยู่อีเมลและข้อความของคุณจะถูกใช้เพื่อตอบกลับการสอบถามของคุณเท่านั้น จะไม่ถูกแบ่งปันกับบุคคลที่สาม และจะถูกลบภายในระยะเวลาที่เหมาะสมหลังจากคำขอของคุณได้รับการแก้ไขแล้ว</p>
   </section>
 </main>
 <script>
-  // Açılış dili: adresteki #tr / #en, yoksa tarayıcının dili (Türkçe değilse İngilizce). Düğme sayfayı kaydırmadan dili değiştirir
+  // Açılış dili: adresteki #dil-kodu (veya kısa #tr, #en vb.), yoksa tarayıcının dili (desteklenmiyorsa en-US). Düğme sayfayı kaydırmadan dili değiştirir
   (function () {
     var root = document.documentElement;
-    function show(lang, updateUrl) {
-      root.className = "js lang-" + lang;
-      root.lang = lang;
-      var links = document.querySelectorAll("nav a[data-lang]");
-      for (var i = 0; i < links.length; i++) links[i].setAttribute("aria-current", links[i].getAttribute("data-lang") === lang ? "true" : "false");
-      if (updateUrl && history.replaceState) history.replaceState(null, "", "#" + lang);
+    var supported = [
+      "tr-TR", "en-US", "es-419", "pt-BR", "de-DE", "fr-FR", "it-IT", "pl-PL",
+      "id", "vi", "ru-RU", "uk", "el-GR", "ja-JP", "ko-KR", "zh-CN",
+      "ar", "fa", "iw-IL", "hi-IN", "th"
+    ];
+    var aliases = {
+      "tr": "tr-TR", "tr-tr": "tr-TR",
+      "en": "en-US", "en-us": "en-US", "en-gb": "en-US",
+      "es": "es-419", "es-419": "es-419", "es-es": "es-419", "es-mx": "es-419",
+      "pt": "pt-BR", "pt-br": "pt-BR", "pt-pt": "pt-BR",
+      "de": "de-DE", "de-de": "de-DE", "de-at": "de-DE", "de-ch": "de-DE",
+      "fr": "fr-FR", "fr-fr": "fr-FR", "fr-ca": "fr-FR",
+      "it": "it-IT", "it-it": "it-IT",
+      "pl": "pl-PL", "pl-pl": "pl-PL",
+      "id": "id", "id-id": "id", "in": "id", "in-id": "id",
+      "vi": "vi", "vi-vn": "vi",
+      "ru": "ru-RU", "ru-ru": "ru-RU",
+      "uk": "uk", "uk-ua": "uk",
+      "el": "el-GR", "el-gr": "el-GR",
+      "ja": "ja-JP", "ja-jp": "ja-JP",
+      "ko": "ko-KR", "ko-kr": "ko-KR",
+      "zh": "zh-CN", "zh-cn": "zh-CN", "zh-hans": "zh-CN", "zh-sg": "zh-CN",
+      "ar": "ar",
+      "fa": "fa", "fa-ir": "fa",
+      "iw": "iw-IL", "iw-il": "iw-IL", "he": "iw-IL", "he-il": "iw-IL",
+      "hi": "hi-IN", "hi-in": "hi-IN",
+      "th": "th", "th-th": "th"
+    };
+    function resolve(tag) {
+      if (!tag) return null;
+      var idx = supported.indexOf(tag);
+      if (idx !== -1) return supported[idx];
+      var lower = tag.toLowerCase();
+      if (aliases[lower]) return aliases[lower];
+      var base = lower.split("-")[0];
+      return aliases[base] || null;
     }
-    var hash = location.hash.replace("#", "");
-    var browser = (navigator.languages && navigator.languages[0]) || navigator.language || "en";
-    show(hash === "tr" || hash === "en" ? hash : (browser.toLowerCase().indexOf("tr") === 0 ? "tr" : "en"), false);
+    function show(lang, updateUrl) {
+      var code = resolve(lang) || "en-US";
+      root.className = "js lang-" + code;
+      var section = document.querySelector('section[data-lang="' + code + '"]');
+      root.lang = (section && section.getAttribute("lang")) || code;
+      var links = document.querySelectorAll("nav a[data-lang]");
+      for (var i = 0; i < links.length; i++) {
+        links[i].setAttribute("aria-current", links[i].getAttribute("data-lang") === code ? "true" : "false");
+      }
+      if (updateUrl && history.replaceState) history.replaceState(null, "", "#" + code);
+    }
+    function detectBrowserLang() {
+      var list = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || "en-US"];
+      for (var i = 0; i < list.length; i++) {
+        var found = resolve(list[i]);
+        if (found) return found;
+      }
+      return "en-US";
+    }
+    function applyFromHash() {
+      var hash = location.hash.replace("#", "");
+      var found = resolve(hash);
+      if (found) show(found, false);
+    }
+    var initial = resolve(location.hash.replace("#", "")) || detectBrowserLang();
+    show(initial, false);
+    window.addEventListener("hashchange", applyFromHash);
     document.querySelector("nav").addEventListener("click", function (e) {
-      var lang = e.target.getAttribute && e.target.getAttribute("data-lang");
+      var target = e.target;
+      while (target && target !== this && !(target.getAttribute && target.getAttribute("data-lang"))) {
+        target = target.parentNode;
+      }
+      var lang = target && target.getAttribute && target.getAttribute("data-lang");
       if (!lang) return;
       e.preventDefault();
       show(lang, true);
