@@ -6,7 +6,7 @@
 <title>Turing Gate — Gizlilik Politikası / Privacy Policy</title>
 <meta name="description" content="Turing Gate mobil oyununun gizlilik politikası. Privacy policy of the Turing Gate mobile game.">
 <style>
-  :root { --bg: #ffffff; --fg: #1b2330; --muted: #5a6577; --line: #dde3ec; --accent: #007c91; }
+  :root { color-scheme: light dark; --bg: #ffffff; --fg: #1b2330; --muted: #5a6577; --line: #dde3ec; --accent: #007c91; }
   @media (prefers-color-scheme: dark) {
     :root { --bg: #0b1220; --fg: #e6edf6; --muted: #9aa8bd; --line: #233047; --accent: #3fd8f0; }
   }
@@ -18,14 +18,33 @@
   h3 { font-size: 1.02rem; margin: 22px 0 4px; }
   p, li { margin: 0 0 10px; }
   .meta { color: var(--muted); font-size: 0.92rem; margin: 0 0 16px; }
-  nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; }
+  nav { margin: 16px 0 0; }
   a { color: var(--accent); }
-  nav a { padding: 5px 10px; border: 1px solid var(--line); border-radius: 8px; text-decoration: none; font-size: 0.92rem; }
-  nav a[aria-current="true"] { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 600; }
+  nav select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: var(--bg);
+    color: var(--fg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 8px 36px 8px 12px;
+    font: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.5L6 8l3.5-3.5' stroke='%235a6577' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+  }
+  @media (prefers-color-scheme: dark) {
+    nav select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.5L6 8l3.5-3.5' stroke='%239aa8bd' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+    }
+  }
+  nav select:hover, nav select:focus { border-color: var(--accent); outline: none; }
   .summary { border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; margin: 12px 0 0; }
   .summary ul { margin: 0; padding-left: 20px; }
   [dir="rtl"] .summary ul { padding-left: 0; padding-right: 20px; }
-  /* Dil düğmesi seçili dili gösterir, diğerlerini gizler. JavaScript kapalıysa tüm diller alt alta görünür */
+  /* Dil menüsü seçili dili gösterir, diğerlerini gizler. JavaScript kapalıysa tüm diller alt alta görünür */
   html.js section[data-lang] { display: none; }
   html.js.lang-tr-TR section[data-lang="tr-TR"],
   html.js.lang-en-US section[data-lang="en-US"],
@@ -53,29 +72,31 @@
 <body>
 <main>
   <h1>Turing Gate</h1>
-  <p class="meta">Gizlilik Politikası / Privacy Policy · VoronLabs</p>
+  <p class="meta" id="policy-subtitle">Gizlilik Politikası · VoronLabs</p>
   <nav aria-label="Dil / Language">
-    <a href="#tr-TR" data-lang="tr-TR" hreflang="tr-TR">Türkçe</a>
-    <a href="#en-US" data-lang="en-US" hreflang="en-US">English</a>
-    <a href="#es-419" data-lang="es-419" hreflang="es-419">Español</a>
-    <a href="#pt-BR" data-lang="pt-BR" hreflang="pt-BR">Português (Brasil)</a>
-    <a href="#de-DE" data-lang="de-DE" hreflang="de-DE">Deutsch</a>
-    <a href="#fr-FR" data-lang="fr-FR" hreflang="fr-FR">Français</a>
-    <a href="#it-IT" data-lang="it-IT" hreflang="it-IT">Italiano</a>
-    <a href="#pl-PL" data-lang="pl-PL" hreflang="pl-PL">Polski</a>
-    <a href="#id" data-lang="id" hreflang="id">Bahasa Indonesia</a>
-    <a href="#vi" data-lang="vi" hreflang="vi">Tiếng Việt</a>
-    <a href="#ru-RU" data-lang="ru-RU" hreflang="ru-RU">Русский</a>
-    <a href="#uk" data-lang="uk" hreflang="uk">Українська</a>
-    <a href="#el-GR" data-lang="el-GR" hreflang="el-GR">Ελληνικά</a>
-    <a href="#ja-JP" data-lang="ja-JP" hreflang="ja-JP">日本語</a>
-    <a href="#ko-KR" data-lang="ko-KR" hreflang="ko-KR">한국어</a>
-    <a href="#zh-CN" data-lang="zh-CN" hreflang="zh-CN">简体中文</a>
-    <a href="#ar" data-lang="ar" hreflang="ar">العربية</a>
-    <a href="#fa" data-lang="fa" hreflang="fa">فارسی</a>
-    <a href="#iw-IL" data-lang="iw-IL" hreflang="he">עברית</a>
-    <a href="#hi-IN" data-lang="hi-IN" hreflang="hi-IN">हिन्दी</a>
-    <a href="#th" data-lang="th" hreflang="th">ไทย</a>
+    <select id="lang-select" aria-label="Dil / Language">
+      <option value="tr-TR">Türkçe (tr-TR)</option>
+      <option value="en-US">English (en-US)</option>
+      <option value="es-419">Español (es-419)</option>
+      <option value="pt-BR">Português - Brasil (pt-BR)</option>
+      <option value="de-DE">Deutsch (de-DE)</option>
+      <option value="fr-FR">Français (fr-FR)</option>
+      <option value="it-IT">Italiano (it-IT)</option>
+      <option value="pl-PL">Polski (pl-PL)</option>
+      <option value="id">Bahasa Indonesia (id)</option>
+      <option value="vi">Tiếng Việt (vi)</option>
+      <option value="ru-RU">Русский (ru-RU)</option>
+      <option value="uk">Українська (uk)</option>
+      <option value="el-GR">Ελληνικά (el-GR)</option>
+      <option value="ja-JP">日本語 (ja-JP)</option>
+      <option value="ko-KR">한국어 (ko-KR)</option>
+      <option value="zh-CN">简体中文 (zh-CN)</option>
+      <option value="ar">العربية (ar)</option>
+      <option value="fa">فارسی (fa)</option>
+      <option value="iw-IL">עברית (iw-IL)</option>
+      <option value="hi-IN">हिन्दी (hi-IN)</option>
+      <option value="th">ไทย (th)</option>
+    </select>
   </nav>
 
   <section id="tr-TR" data-lang="tr-TR" lang="tr">
@@ -975,14 +996,19 @@
       var base = lower.split("-")[0];
       return aliases[base] || null;
     }
+    var select = document.getElementById("lang-select");
+    var subtitle = document.getElementById("policy-subtitle");
     function show(lang, updateUrl) {
       var code = resolve(lang) || "en-US";
       root.className = "js lang-" + code;
       var section = document.querySelector('section[data-lang="' + code + '"]');
       root.lang = (section && section.getAttribute("lang")) || code;
-      var links = document.querySelectorAll("nav a[data-lang]");
-      for (var i = 0; i < links.length; i++) {
-        links[i].setAttribute("aria-current", links[i].getAttribute("data-lang") === code ? "true" : "false");
+      if (select && select.value !== code) select.value = code;
+      var h2 = section && section.querySelector("h2");
+      if (h2) {
+        var titleText = h2.textContent;
+        if (subtitle) subtitle.textContent = titleText + " · VoronLabs";
+        document.title = "Turing Gate — " + titleText;
       }
       if (updateUrl && history.replaceState) history.replaceState(null, "", "#" + code);
     }
@@ -1002,17 +1028,12 @@
     var initial = resolve(location.hash.replace("#", "")) || detectBrowserLang();
     show(initial, false);
     window.addEventListener("hashchange", applyFromHash);
-    document.querySelector("nav").addEventListener("click", function (e) {
-      var target = e.target;
-      while (target && target !== this && !(target.getAttribute && target.getAttribute("data-lang"))) {
-        target = target.parentNode;
-      }
-      var lang = target && target.getAttribute && target.getAttribute("data-lang");
-      if (!lang) return;
-      e.preventDefault();
-      show(lang, true);
-      window.scrollTo(0, 0);
-    });
+    if (select) {
+      select.addEventListener("change", function () {
+        show(this.value, true);
+        window.scrollTo(0, 0);
+      });
+    }
   })();
 </script>
 </body>
